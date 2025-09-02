@@ -1,0 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   verify.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/02 16:42:29 by yaycicek          #+#    #+#             */
+/*   Updated: 2025/09/02 20:05:09 by yaycicek         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "cub3d.h"
+
+static int	check_file_extension(char *file)
+{
+	char	*ext;
+
+	ext = ft_strrchr(file, '.');
+	if (!ext || ft_strcmp(ext, ".cub") != 0 || ft_strlen(file) == 4)
+		return (print(ERR_INVALID_EXTENSION));
+	return (0);
+}
+
+void	verify(int argc, char *file)
+{
+	if (argc != 2)
+		exit(print(ERR_INVALID_ARGS));
+	if (check_file_extension(file))
+		exit(EXIT_FAILURE);
+}

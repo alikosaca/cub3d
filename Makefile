@@ -3,7 +3,7 @@ NAME      = cub3D
 CC        = cc
 CFLAGS    = -Wall -Wextra -Werror -I$(INC_DIR) -I$(LIBFT_DIR) -I$(MLX_DIR)
 LDFLAGS   = -L$(LIBFT_DIR) -L$(MLX_DIR)
-LDLIBS    = -lmlx -lXext -lX11 -lm
+LDLIBS    = -lft -lmlx -lXext -lX11 -lm
 
 RM        = rm -f
 
@@ -11,12 +11,20 @@ INC_DIR   = include
 LIBFT_DIR = libft
 MLX_DIR   = minilibx-linux
 SRC_DIR   = src
+# PRS_DIR   = parser
+# EXC_DIR   = executor
+UTL_DIR   = utils
 
 LIBFT     = $(LIBFT_DIR)/libft.a
 MLX       = $(MLX_DIR)/libmlx.a
 
-SRC       = $(wildcard $(SRC_DIR)/*.c)
-OBJ       = $(SRC:.c=.o)
+SRC       = $(SRC_DIR)/main.c \
+            $(SRC_DIR)/verify.c
+# PRS       = $(SRC_DIR)/parser/parser.c
+# EXC       = $(SRC_DIR)/$(EXC_DIR)/executor.c
+UTL       = $(SRC_DIR)/$(UTL_DIR)/print.c \
+
+OBJ       = $(SRC:.c=.o) $(PRS:.c=.o) $(EXC:.c=.o) $(UTL:.c=.o)
 
 all: $(LIBFT) $(MLX) $(NAME)
 
@@ -26,7 +34,7 @@ $(LIBFT):
 $(MLX):
 	$(MAKE) -C $(MLX_DIR)
 
-$(NAME): $(OBJ) $(LIBFT) $(MLX)
+$(NAME): $(OBJ) $(MLX)
 	$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) $(LDLIBS) -o $(NAME)
 
 clean:
