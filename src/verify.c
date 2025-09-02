@@ -6,11 +6,21 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 16:42:29 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/02 20:05:09 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/02 20:29:49 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static int	is_file_readable(char *file)
+{
+	int	fd;
+
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		return (print(ERR_FILE_NOT_READABLE));
+	return (0);
+}
 
 static int	check_file_extension(char *file)
 {
@@ -27,5 +37,7 @@ void	verify(int argc, char *file)
 	if (argc != 2)
 		exit(print(ERR_INVALID_ARGS));
 	if (check_file_extension(file))
+		exit(EXIT_FAILURE);
+	if (is_file_readable(file))
 		exit(EXIT_FAILURE);
 }

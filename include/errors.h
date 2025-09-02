@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 18:43:24 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/02 20:04:28 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/02 20:29:30 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 # define ERR_INVALID_ARGS "Usage: .cub3D <map.cub>"
 # define ERR_INVALID_EXTENSION "Map file must have a .cub extension"
+# define ERR_FILE_NOT_READABLE "Map file is not readable"
 
 int	print(char *str);
 
