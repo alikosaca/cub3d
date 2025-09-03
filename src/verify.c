@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 16:42:29 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/02 20:29:49 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/03 16:04:31 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	is_file_readable(char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		return (print(ERR_FILE_NOT_READABLE));
+		return (print(ERR_FILE_MISS_OR_UNREAD));
 	return (0);
 }
 
