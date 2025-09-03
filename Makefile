@@ -23,6 +23,7 @@ SRC       = $(SRC_DIR)/main.c \
 # PRS       = $(SRC_DIR)/parser/parser.c
 # EXC       = $(SRC_DIR)/$(EXC_DIR)/executor.c
 UTL       = $(SRC_DIR)/$(UTL_DIR)/print.c \
+            $(SRC_DIR)/$(UTL_DIR)/alloc.c
 
 OBJ       = $(SRC:.c=.o) $(PRS:.c=.o) $(EXC:.c=.o) $(UTL:.c=.o)
 

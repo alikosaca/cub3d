@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/02 16:29:37 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/03 15:00:58 by yaycicek         ###   ########.fr       */
+/*   Created: 2025/09/03 13:58:34 by yaycicek          #+#    #+#             */
+/*   Updated: 2025/09/03 15:48:09 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef UTILS_H
+# define UTILS_H
 
-# include <fcntl.h> 
+# include "libft.h"
 
-# include "errors.h"
-# include "utils.h"
+void	*_alloc(void **ptr, size_t nmemb, size_t size);
+void	*__alloc(void ***ptr, size_t nmemb, size_t size);
+void	_free(void **ptr);
+void	__free(void ***ptr);
 
-void	verify(int argc, char *argv);
 #endif
