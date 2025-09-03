@@ -6,11 +6,11 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 18:46:28 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/02 20:04:46 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/03 15:55:00 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "errors.h"
+#include "utils.h"
 
 #define BOLD   "\e[1m"
 #define RED    "\e[31m"

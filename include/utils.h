@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:58:34 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/03 15:48:09 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/03 15:54:39 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define UTILS_H
 
 # include "libft.h"
+# include "errors.h"
+
+int		print(char *str);
 
 void	*_alloc(void **ptr, size_t nmemb, size_t size);
 void	*__alloc(void ***ptr, size_t nmemb, size_t size);
