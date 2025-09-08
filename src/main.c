@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 16:41:00 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/08 19:24:05 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/08 19:53:59 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char *argv[])
 	t_game *const	game = &(t_game){0};
 
 	verify(argc, argv[1]);
-	if (parser(&game->parser, argv[1]))
+	if (parser(&game->pars, argv[1]))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
