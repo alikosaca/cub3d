@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 18:43:24 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/03 16:04:25 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/08 16:59:02 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@
 # define ERR_INVALID_ARGS "Usage: .cub3D <map.cub>"
 # define ERR_INVALID_EXTENSION "Map file must have a .cub extension"
 # define ERR_FILE_MISS_OR_UNREAD "Map file does not exist or is not readable"
+# define ERR_EMPTY_MAP "Map file cannot be empty"
 
 #endif
