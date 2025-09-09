@@ -6,11 +6,12 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 19:29:39 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/08 19:31:33 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/09 11:18:14 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
+#include <stdio.h>
 
 int	get_file_height(char *file, int *fd, int *height)
 {
@@ -58,5 +59,30 @@ int	fill_grid(char *file, int *fd, char ***grid)
 	}
 	(*grid)[i] = NULL;
 	close((*fd));
+	return (0);
+}
+
+int	check_invalid_whitespace(char **grid)
+{
+	char	c;
+	int		i;
+	int		j;
+
+	i = 0;
+	while (grid[i])
+	{
+		j = 0;
+		c = grid[i][j];
+		while (grid[i][j])
+		{
+			if (ft_isspace(c) && c != ' ' && c != '\n')
+			{
+				__free((void ***)&grid);
+				return (1);
+			}
+			j++;
+		}
+		i++;
+	}
 	return (0);
 }

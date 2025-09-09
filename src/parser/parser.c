@@ -6,11 +6,12 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 14:45:35 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/08 22:15:34 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/09 11:18:50 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
+#include <stdio.h>
 
 static int	read_file(char ***grid, char *file)
 {
@@ -22,6 +23,8 @@ static int	read_file(char ***grid, char *file)
 	if (!__alloc((void ***)grid, height + 1, sizeof(char *)))
 		return (1);
 	if (fill_grid(file, &fd, grid))
+		return (1);
+	if (check_invalid_whitespace((*grid)))
 		return (1);
 	return (0);
 }

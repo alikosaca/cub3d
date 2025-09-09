@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:26:53 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/08 19:56:48 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/09 11:04:01 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int	parser(t_pars *pars, char *file);
 
 int	get_file_height(char *file, int *fd, int *height);
 int	fill_grid(char *file, int *fd, char ***grid);
+int	check_invalid_whitespace(char **grid);
 
 # define PARSER_H
 #endif
