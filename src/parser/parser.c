@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 14:45:35 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/09 11:30:05 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/09 11:32:39 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ static int	read_file(char ***grid, char *file)
 	int		height;
 
 	fd = -1;
-	if (!get_file_height(file, fd, &height))
+	if (!get_file_height(&height, file, fd))
 		return (print(ERR_EMPTY_MAP));
 	if (!__alloc((void ***)grid, height + 1, sizeof(char *)))
 		return (1);
-	if (fill_grid(file, fd, grid))
+	if (fill_grid(grid, file, fd))
 		return (1);
 	if (check_invalid_whitespace((*grid)))
 		return (1);

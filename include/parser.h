@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:26:53 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/09 11:29:21 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/09 11:33:30 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ typedef struct s_pars
 
 int	parser(t_pars *pars, char *file);
 
-int	get_file_height(char *file, int fd, int *height);
-int	fill_grid(char *file, int fd, char ***grid);
+int	get_file_height(int *height, char *file, int fd);
+int	fill_grid(char ***grid, char *file, int fd);
 int	check_invalid_whitespace(char **grid);
 
 # define PARSER_H

@@ -6,14 +6,14 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 19:29:39 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/09 11:28:44 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/09 11:33:14 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 #include <stdio.h>
 
-int	get_file_height(char *file, int fd, int *height)
+int	get_file_height(int *height, char *file, int fd)
 {
 	char	*line;
 
@@ -33,7 +33,7 @@ int	get_file_height(char *file, int fd, int *height)
 	return ((*height));
 }
 
-int	fill_grid(char *file, int fd, char ***grid)
+int	fill_grid(char ***grid, char *file, int fd)
 {
 	int		i;
 	char	*line;
