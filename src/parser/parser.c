@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 14:45:35 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/09 11:32:39 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/09 22:18:50 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	read_file(char ***grid, char *file)
 	if (fill_grid(grid, file, fd))
 		return (1);
 	if (check_invalid_whitespace((*grid)))
-		return (1);
+		return (print(ERR_INVALID_WHITESPACE));
 	return (0);
 }
 
