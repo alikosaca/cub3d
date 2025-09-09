@@ -55,7 +55,7 @@ norm:
 	@norminette src include
 
 term:
-	valgrind \
+	@valgrind \
 	--leak-check=full \
 	--show-leak-kinds=all \
 	--track-origins=yes \
