@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 19:29:39 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/09 11:42:18 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/09 16:02:47 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,23 +41,23 @@ int	fill_grid(char ***grid, char *file, int fd)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (1);
-	i = 0;
+	i = -1;
 	while (true)
 	{
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		(*grid)[i] = ft_strdup(line);
+		(*grid)[++i] = ft_strdup(line);
 		if (!(*grid)[i])
 		{
+			_free((void **)&line);
 			__free((void ***)grid);
 			close(fd);
 			return (1);
 		}
 		_free((void **)&line);
-		i++;
 	}
-	(*grid)[i] = NULL;
+	(*grid)[++i] = NULL;
 	close(fd);
 	return (0);
 }
