@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 19:29:39 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/09 11:33:14 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/09 11:42:18 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ int	check_invalid_whitespace(char **grid)
 	while (grid[i])
 	{
 		j = 0;
-		c = grid[i][j];
 		while (grid[i][j])
 		{
+			c = grid[i][j];
 			if (ft_isspace(c) && c != ' ' && c != '\n')
 			{
 				__free((void ***)&grid);
