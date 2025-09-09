@@ -1,29 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/03 13:58:34 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/10 00:12:51 by yaycicek         ###   ########.fr       */
+/*   Created: 2025/09/10 00:09:47 by yaycicek          #+#    #+#             */
+/*   Updated: 2025/09/10 00:12:23 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "utils.h"
 
-# include "libft.h"
-# include "errors.h"
+void	_free(void **ptr)
+{
+	if (!ptr)
+		return ;
+	free((*ptr));
+	(*ptr) = NULL;
+}
 
-int		print(char *str);
+void	__free(void ***ptr)
+{
+	size_t	i;
 
-void	*_alloc(void **ptr, size_t nmemb, size_t size);
-void	*__alloc(void ***ptr, size_t nmemb, size_t size);
+	if (!ptr)
+		return ;
+	i = 0;
+	while ((*ptr)[i])
+	{
+		_free((void **)&(*ptr)[i]);
+		i++;
+	}
+	free((*ptr));
+	(*ptr) = NULL;
+}
 
-void	_free(void **ptr);
-void	__free(void ***ptr);
-void	_free_(void **f, void **s);
-void	_free__(void **f, void ***s);
+void	_free_(void **f, void **s)
+{
+	_free(f);
+	_free(s);
+}
 
-#endif
+void	_free__(void **f, void ***s)
+{
+	_free(f);
+	__free(s);
+}

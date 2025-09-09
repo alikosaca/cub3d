@@ -24,7 +24,8 @@ PRS       = $(SRC_DIR)/parser/parser.c \
             $(SRC_DIR)/parser/grid_utils.c
 # EXC       = $(SRC_DIR)/$(EXC_DIR)/executor.c
 UTL       = $(SRC_DIR)/$(UTL_DIR)/print.c \
-            $(SRC_DIR)/$(UTL_DIR)/alloc.c
+            $(SRC_DIR)/$(UTL_DIR)/alloc.c \
+            $(SRC_DIR)/$(UTL_DIR)/free.c
 
 OBJ       = $(SRC:.c=.o) $(PRS:.c=.o) $(EXC:.c=.o) $(UTL:.c=.o)
 
