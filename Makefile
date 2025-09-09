@@ -51,6 +51,9 @@ fclean: clean
 
 re: fclean all
 
+norm:
+	@norminette src include
+
 term:
 	valgrind \
 	--leak-check=full \
