@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 16:29:37 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/10 05:07:23 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/10 21:18:53 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "errors.h"
 # include "utils.h"
 # include "parser.h"
+# include "executor.h"
 
 typedef struct s_game
 {
