@@ -19,9 +19,13 @@ LIBFT     = $(LIBFT_DIR)/libft.a
 MLX       = $(MLX_DIR)/libmlx.a
 
 SRC       = $(SRC_DIR)/main.c \
-            $(SRC_DIR)/verify.c
+            $(SRC_DIR)/verify.c \
+            $(SRC_DIR)/cleanup.c
 PRS       = $(SRC_DIR)/parser/parser.c \
-            $(SRC_DIR)/parser/grid_utils.c
+            $(SRC_DIR)/parser/parser_utils.c \
+            $(SRC_DIR)/parser/grid_utils.c \
+            $(SRC_DIR)/parser/tex.c \
+            $(SRC_DIR)/parser/destroy.c
 # EXC       = $(SRC_DIR)/$(EXC_DIR)/executor.c
 UTL       = $(SRC_DIR)/$(UTL_DIR)/print.c \
             $(SRC_DIR)/$(UTL_DIR)/alloc.c \

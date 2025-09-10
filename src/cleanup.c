@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/02 16:29:37 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/10 05:07:23 by yaycicek         ###   ########.fr       */
+/*   Created: 2025/09/10 05:00:05 by yaycicek          #+#    #+#             */
+/*   Updated: 2025/09/10 06:02:02 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "cub3d.h"
 
-# include <fcntl.h> 
-
-# include "errors.h"
-# include "utils.h"
-# include "parser.h"
-
-typedef struct s_game
+void	cleanup(t_game *game)
 {
-	t_pars	pars;
-}	t_game;
-
-void	verify(int argc, char *argv);
-void	cleanup(t_game *game);
-#endif
+	destroy_pars(&game->pars);
+}

@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/02 16:29:37 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/10 05:07:23 by yaycicek         ###   ########.fr       */
+/*   Created: 2025/09/10 06:19:21 by yaycicek          #+#    #+#             */
+/*   Updated: 2025/09/10 06:19:28 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "parser.h"
 
-# include <fcntl.h> 
-
-# include "errors.h"
-# include "utils.h"
-# include "parser.h"
-
-typedef struct s_game
+char	**get_split_lines(char *line)
 {
-	t_pars	pars;
-}	t_game;
+	char	**lines;
 
-void	verify(int argc, char *argv);
-void	cleanup(t_game *game);
-#endif
+	lines = ft_split(line, ' ');
+	if (!lines)
+		return (NULL);
+	return (lines);
+}

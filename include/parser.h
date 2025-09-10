@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:26:53 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/09 11:33:30 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/10 06:20:02 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,18 @@ typedef struct s_pars
 	t_map	map;
 }	t_pars;
 
-int	parser(t_pars *pars, char *file);
+int		parser(t_pars *pars, char *file);
 
-int	get_file_height(int *height, char *file, int fd);
-int	fill_grid(char ***grid, char *file, int fd);
-int	check_invalid_whitespace(char **grid);
+int		get_file_height(int *height, char *file, int fd);
+int		fill_grid(char ***grid, char *file, int fd);
+int		check_invalid_whitespace(char **grid);
+
+char	**get_split_lines(char *line);
+
+int		is_tex(char **lines, int *out);
+int		set_tex(t_pars *pars, char **lines, int *out);
+
+void	destroy_pars(t_pars *pars);
 
 # define PARSER_H
 #endif

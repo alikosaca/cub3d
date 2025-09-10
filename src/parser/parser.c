@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 14:45:35 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/09 22:18:50 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/10 06:19:10 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,27 @@ static int	read_file(char ***grid, char *file)
 	return (0);
 }
 
+int	init_pars(t_pars *pars, char **grid)
+{
+	int		i;
+	int		out;
+	char	**lines;
+
+	i = 0;
+	while (grid[i])
+	{
+		lines = get_split_lines(grid[i]);
+		if (!lines)
+			return (__free((void ***)&grid), 1);
+		if (is_tex(lines, &out))
+			if (set_tex(pars, lines, &out))
+				return (__free__((void ***)&grid, (void ***)&lines), 1);
+		__free((void ***)&lines);
+		i++;
+	}
+	return (0);
+}
+
 int	parser(t_pars *pars, char *file)
 {
 	char	**grid;
@@ -37,6 +58,8 @@ int	parser(t_pars *pars, char *file)
 	(void)pars;
 	grid = NULL;
 	if (read_file(&grid, file))
+		return (1);
+	if (init_pars(pars, grid))
 		return (1);
 	__free((void ***)&grid);
 	return (0);
