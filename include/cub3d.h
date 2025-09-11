@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 16:29:37 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/10 21:18:53 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/09/11 11:24:42 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 typedef struct s_game
 {
 	t_pars	pars;
+	t_exec	exec;
 }	t_game;
 
 void	verify(int argc, char *argv);

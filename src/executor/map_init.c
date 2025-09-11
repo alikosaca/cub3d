@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   map_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:32:23 by akosaca           #+#    #+#             */
-/*   Updated: 2025/09/10 21:32:26 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/09/11 15:34:40 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executor.h"
 
-int	init_mlx(t_map *map)
+int	init_mlx(void **mlx)
 {
-	map->mlx = mlx_init();
-	if (!map->mlx)
-		return (1); //! add error message
+	(*mlx) = mlx_init();
+	if (!(*mlx))
+		return (1);
 	return (0);
 }

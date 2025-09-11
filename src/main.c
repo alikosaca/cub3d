@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 16:41:00 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/10 05:18:38 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/11 12:32:00 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	main(int argc, char *argv[])
 
 	verify(argc, argv[1]);
 	if (parser(&game->pars, argv[1]))
+		return (cleanup(game), EXIT_FAILURE);
+	if (executor(&game->exec, &game->pars))
 		return (cleanup(game), EXIT_FAILURE);
 	cleanup(game);
 	return (EXIT_SUCCESS);
