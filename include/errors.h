@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 18:43:24 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/11 16:24:04 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/11 21:36:35 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,9 @@
 # define ERR_DUP_TEX "Map file has duplicate texture definition"
 # define ERR_TEX_FILE "Map file has missing or unreadable texture file"
 # define ERR_INVALID_TEX_EXT "Texture file must have a .xpm extension"
+# define ERR_MISS_RGB "Map file has missing RGB color definition"
+# define ERR_MULTI_RGB "Map file has multiple RGB color definitions"
+# define ERR_RGB_OVERFLOW "RGB color cannot have more than 3 values"
+# define ERR_TRAIL_COMMA_RGB "RGB color definition cannot end with a ','"
 
 #endif
