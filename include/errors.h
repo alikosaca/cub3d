@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 18:43:24 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/10 05:10:22 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/11 16:24:04 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,7 @@
 # define ERR_MISS_PATH "Map file has missing texture path"
 # define ERR_MULTI_PATH "Map file has multiple paths for a texture"
 # define ERR_DUP_TEX "Map file has duplicate texture definition"
+# define ERR_TEX_FILE "Map file has missing or unreadable texture file"
+# define ERR_INVALID_TEX_EXT "Texture file must have a .xpm extension"
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:26:53 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/10 06:20:02 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/11 18:07:42 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,9 @@ int		check_invalid_whitespace(char **grid);
 
 char	**get_split_lines(char *line);
 
-int		is_tex(char **lines, int *out);
-int		set_tex(t_pars *pars, char **lines, int *out);
+int		init_tex(t_pars *pars, char **lines, int *out);
+
+int		validate_xpm_file(char *file);
 
 void	destroy_pars(t_pars *pars);
 
