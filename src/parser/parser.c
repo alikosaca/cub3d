@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 14:45:35 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/11 18:07:34 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/11 19:16:19 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int	parser(t_pars *pars, char *file)
 {
 	char	**grid;
 
-	(void)pars;
 	grid = NULL;
 	if (read_file(&grid, file))
 		return (1);
