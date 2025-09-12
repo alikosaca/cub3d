@@ -28,6 +28,7 @@ PRS       = $(SRC_DIR)/$(PRS_DIR)/parser.c \
             $(SRC_DIR)/$(PRS_DIR)/texture.c \
             $(SRC_DIR)/$(PRS_DIR)/texture_utils.c \
             $(SRC_DIR)/$(PRS_DIR)/rgb.c \
+            $(SRC_DIR)/$(PRS_DIR)/rgb_utils.c \
             $(SRC_DIR)/$(PRS_DIR)/destroy.c
 EXC       = $(SRC_DIR)/$(EXC_DIR)/executor.c \
             $(SRC_DIR)/$(EXC_DIR)/map_init.c

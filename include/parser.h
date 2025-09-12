@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:26:53 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/11 21:41:50 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/13 00:11:17 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int		init_tex(t_pars *pars, char **lines, int *out);
 int		validate_xpm_file(char *file);
 
 int		init_rgb(t_pars *pars, char **lines, int *out);
+void	init_rgb_values(t_rgb *fl, t_rgb *cl, bool *initialized);
+int		set_rgb_values(t_rgb *fl, t_rgb *cl, char **lines, int *out);
 
 void	destroy_pars(t_pars *pars);
 

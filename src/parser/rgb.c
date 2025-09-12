@@ -6,22 +6,11 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 19:22:39 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/11 21:41:33 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/12 15:01:34 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
-#include <stdio.h>
-
-static void	init_rgb_values(t_rgb *fl, t_rgb *cl)
-{
-	fl->r = -1;
-	fl->g = -1;
-	fl->b = -1;
-	cl->r = -1;
-	cl->g = -1;
-	cl->b = -1;
-}
 
 static int	is_rgb(char **lines, int *out)
 {
@@ -34,23 +23,6 @@ static int	is_rgb(char **lines, int *out)
 	else
 		(*out) = 0;
 	return ((*out));
-}
-
-static int	set_rgb_values(t_rgb *fl, t_rgb *cl, char **lines, int *out)
-{
-	char	**rgb_values;
-
-	(void)fl;
-	(void)cl;
-	(void)out;
-	rgb_values = ft_split(lines[1], ',');
-	if (!rgb_values)
-		return (1);
-	if (rgb_values[3])
-		return (__free((void ***)&rgb_values), print(ERR_RGB_OVERFLOW), 1);
-	if (lines[1][ft_strlen(lines[1]) - 1])
-		return (__free((void ***)&rgb_values), print(ERR_TRAIL_COMMA_RGB), 1);
-	return (0);
 }
 
 static int	set_rgb(t_pars *pars, char **lines, int *out)
@@ -66,9 +38,11 @@ static int	set_rgb(t_pars *pars, char **lines, int *out)
 
 int	init_rgb(t_pars *pars, char **lines, int *out)
 {
-	int	checker;
+	static bool	initialized;
+	int			checker;
 
-	init_rgb_values(&pars->fl, &pars->cl);
+	if (!initialized)
+		init_rgb_values(&pars->fl, &pars->cl, &initialized);
 	if (is_rgb(lines, out))
 	{
 		checker = set_rgb(pars, lines, out);
