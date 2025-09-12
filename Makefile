@@ -8,8 +8,9 @@ LDLIBS    = -lft -lmlx -lXext -lX11 -lm
 RM        = rm -f
 
 INC_DIR   = include
-LIBFT_DIR = libft
-MLX_DIR   = minilibx-linux
+LIB_DIR   = lib
+LIBFT_DIR = $(LIB_DIR)/libft
+MLX_DIR   = $(LIB_DIR)/minilibx-linux
 SRC_DIR   = src
 PRS_DIR   = parser
 EXC_DIR   = executor
