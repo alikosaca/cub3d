@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 02:24:01 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/11 18:08:01 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/13 00:54:25 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,23 +49,6 @@ static int	set_tex(t_pars *pars, char **lines, int *out)
 	return ((*out));
 }
 
-static int	has_tex_file(t_pars *pars, int *out)
-{
-	char	*file;
-
-	if ((*out) == 2)
-		file = pars->tex.no;
-	else if ((*out) == 3)
-		file = pars->tex.so;
-	else if ((*out) == 4)
-		file = pars->tex.we;
-	else if ((*out) == 5)
-		file = pars->tex.ea;
-	else
-		return (0);
-	return (validate_xpm_file(file));
-}
-
 int	init_tex(t_pars *pars, char **lines, int *out)
 {
 	int	checker;
@@ -75,7 +58,7 @@ int	init_tex(t_pars *pars, char **lines, int *out)
 		checker = set_tex(pars, lines, out);
 		if (checker == 1)
 			return (1);
-		if (has_tex_file(pars, out))
+		if (is_xpm_file(pars, out))
 			return (1);
 	}
 	return (0);
