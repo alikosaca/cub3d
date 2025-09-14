@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 15:00:05 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/13 00:29:38 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/14 15:49:57 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,18 @@ static int	check_rgb_values(t_rgb *fl, t_rgb *cl, char **rgb_values, int *out)
 {
 	int	i;
 	int	j;
-	int	value;
 
 	i = 0;
 	while (rgb_values[i])
 	{
 		j = 0;
-		value = ft_atoi(rgb_values[i]);
 		while (rgb_values[i][j])
 		{
 			if (!ft_isdigit(rgb_values[i][j]))
 				return (print(ERR_RGB_NOT_NUM));
 			j++;
 		}
-		if (value < 0 || value > 255)
+		if (ft_atoi(rgb_values[i]) < 0 || ft_atoi(rgb_values[i]) > 255)
 			return (print(ERR_RGB_OUT_OF_RANGE));
 		i++;
 	}
