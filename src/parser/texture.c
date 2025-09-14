@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 02:24:01 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/13 00:54:25 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/14 14:14:36 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,35 +30,35 @@ static int	is_tex(char **lines, int *out)
 	return ((*out));
 }
 
-static int	set_tex(t_pars *pars, char **lines, int *out)
+static int	set_tex(t_tex *tex, char **lines, int *out)
 {
 	if (!lines[1])
 		return (print(ERR_MISS_PATH));
 	if (lines[2])
 		return (print(ERR_MULTI_PATH));
-	if ((*out) == 2 && !pars->tex.no)
-		pars->tex.no = ft_strdup(lines[1]);
-	else if ((*out) == 3 && !pars->tex.so)
-		pars->tex.so = ft_strdup(lines[1]);
-	else if ((*out) == 4 && !pars->tex.we)
-		pars->tex.we = ft_strdup(lines[1]);
-	else if ((*out) == 5 && !pars->tex.ea)
-		pars->tex.ea = ft_strdup(lines[1]);
+	if ((*out) == 2 && !tex->no)
+		tex->no = ft_strdup(lines[1]);
+	else if ((*out) == 3 && !tex->so)
+		tex->so = ft_strdup(lines[1]);
+	else if ((*out) == 4 && !tex->we)
+		tex->we = ft_strdup(lines[1]);
+	else if ((*out) == 5 && !tex->ea)
+		tex->ea = ft_strdup(lines[1]);
 	else
 		return (print(ERR_DUP_TEX));
 	return ((*out));
 }
 
-int	init_tex(t_pars *pars, char **lines, int *out)
+int	init_tex(t_tex *tex, char **lines, int *out)
 {
 	int	checker;
 
 	if (is_tex(lines, out))
 	{
-		checker = set_tex(pars, lines, out);
+		checker = set_tex(tex, lines, out);
 		if (checker == 1)
 			return (1);
-		if (is_xpm_file(pars, out))
+		if (is_xpm_file(tex, out))
 			return (1);
 	}
 	return (0);

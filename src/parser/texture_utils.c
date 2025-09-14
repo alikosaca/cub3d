@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 16:58:33 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/13 00:54:04 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/14 14:04:39 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,18 @@ static int	validate_xpm_file(char *file)
 	return (0);
 }
 
-int	is_xpm_file(t_pars *pars, int *out)
+int	is_xpm_file(t_tex *tex, int *out)
 {
 	char	*file;
 
 	if ((*out) == 2)
-		file = pars->tex.no;
+		file = tex->no;
 	else if ((*out) == 3)
-		file = pars->tex.so;
+		file = tex->so;
 	else if ((*out) == 4)
-		file = pars->tex.we;
+		file = tex->we;
 	else if ((*out) == 5)
-		file = pars->tex.ea;
+		file = tex->ea;
 	else
 		return (0);
 	return (validate_xpm_file(file));

@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 19:29:39 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/14 12:54:56 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/14 13:39:19 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	strip_newline(char **line)
 	}
 }
 
-int	fill_grid(char ***grid, char *file, int fd)
+int	fill_grid(char **grid[], char *file, int fd)
 {
 	int		i;
 	char	*line;
@@ -54,30 +54,26 @@ int	fill_grid(char ***grid, char *file, int fd)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (1);
-	i = -1;
+	i = 0;
 	while (true)
 	{
 		line = get_next_line(fd);
 		if (!line)
 			break ;
 		strip_newline(&line);
-		(*grid)[++i] = ft_strdup(line);
+		(*grid)[i] = ft_strdup(line);
 		if (!(*grid)[i])
-		{
-			_free__((void **)&line, (void ***)grid);
-			close(fd);
-			return (1);
-		}
+			return (_free((void **)&line), close(fd), 1);
 		_free((void **)&line);
+		i++;
 	}
-	(*grid)[++i] = NULL;
+	(*grid)[i] = NULL;
 	close(fd);
 	return (0);
 }
 
-int	check_invalid_whitespace(char **grid)
+int	check_invalid_whitespace(char *grid[])
 {
-	char	c;
 	int		i;
 	int		j;
 
@@ -87,12 +83,8 @@ int	check_invalid_whitespace(char **grid)
 		j = 0;
 		while (grid[i][j])
 		{
-			c = grid[i][j];
-			if (ft_isspace(c) && c != ' ')
-			{
-				__free((void ***)&grid);
+			if (ft_isspace(grid[i][j]) && grid[i][j] != ' ')
 				return (1);
-			}
 			j++;
 		}
 		i++;

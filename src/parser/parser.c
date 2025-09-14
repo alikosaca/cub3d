@@ -6,14 +6,14 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 14:45:35 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/11 21:40:45 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/14 14:15:07 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 #include <stdio.h>
 
-static int	read_file(char ***grid, char *file)
+static int	read_file(char **grid[], char *file)
 {
 	int		fd;
 	int		height;
@@ -30,7 +30,7 @@ static int	read_file(char ***grid, char *file)
 	return (0);
 }
 
-static int	init_pars(t_pars *pars, char **grid)
+static int	init_pars(t_pars *pars, char *grid[])
 {
 	int		i;
 	int		out;
@@ -41,11 +41,11 @@ static int	init_pars(t_pars *pars, char **grid)
 	{
 		lines = get_split_lines(grid[i]);
 		if (!lines)
-			return (__free((void ***)&grid), 1);
-		if (init_tex(pars, lines, &out))
-			return (__free__((void ***)&grid, (void ***)&lines), 1);
-		if (init_rgb(pars, lines, &out))
-			return (__free__((void ***)&grid, (void ***)&lines), 1);
+			return (1);
+		if (init_tex(&pars->tex, lines, &out))
+			return (__free((void ***)&lines), 1);
+		if (init_rgb(&pars->fl, &pars->cl, lines, &out))
+			return (__free((void ***)&lines), 1);
 		__free((void ***)&lines);
 		i++;
 	}
@@ -58,9 +58,9 @@ int	parser(t_pars *pars, char *file)
 
 	grid = NULL;
 	if (read_file(&grid, file))
-		return (1);
+		return (__free((void ***)&grid), 1);
 	if (init_pars(pars, grid))
-		return (1);
+		return (__free((void ***)&grid), 1);
 	__free((void ***)&grid);
 	return (0);
 }

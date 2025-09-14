@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:26:53 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/13 00:54:15 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/14 14:16:44 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,15 @@ typedef struct s_pars
 int		parser(t_pars *pars, char *file);
 
 int		get_file_height(int *height, char *file, int fd);
-int		fill_grid(char ***grid, char *file, int fd);
-int		check_invalid_whitespace(char **grid);
+int		fill_grid(char **grid[], char *file, int fd);
+int		check_invalid_whitespace(char *grid[]);
 
 char	**get_split_lines(char *line);
 
-int		init_tex(t_pars *pars, char **lines, int *out);
-int		is_xpm_file(t_pars *pars, int *out);
+int		init_tex(t_tex *tex, char **lines, int *out);
+int		is_xpm_file(t_tex *tex, int *out);
 
-int		init_rgb(t_pars *pars, char **lines, int *out);
+int		init_rgb(t_rgb *fl, t_rgb *cl, char **lines, int *out);
 void	init_rgb_values(t_rgb *fl, t_rgb *cl, bool *initialized);
 int		set_rgb_values(t_rgb *fl, t_rgb *cl, char **lines, int *out);
 

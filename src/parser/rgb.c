@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 19:22:39 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/12 15:01:34 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/14 14:16:06 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,27 @@ static int	is_rgb(char **lines, int *out)
 	return ((*out));
 }
 
-static int	set_rgb(t_pars *pars, char **lines, int *out)
+static int	set_rgb(t_rgb *fl, t_rgb *cl, char **lines, int *out)
 {
 	if (!lines[1])
 		return (print(ERR_MISS_RGB));
 	if (lines[2])
 		return (print(ERR_MULTI_RGB));
-	if (set_rgb_values(&pars->fl, &pars->cl, lines, out))
+	if (set_rgb_values(fl, cl, lines, out))
 		return (1);
 	return (0);
 }
 
-int	init_rgb(t_pars *pars, char **lines, int *out)
+int	init_rgb(t_rgb *fl, t_rgb *cl, char **lines, int *out)
 {
 	static bool	initialized;
 	int			checker;
 
 	if (!initialized)
-		init_rgb_values(&pars->fl, &pars->cl, &initialized);
+		init_rgb_values(fl, cl, &initialized);
 	if (is_rgb(lines, out))
 	{
-		checker = set_rgb(pars, lines, out);
+		checker = set_rgb(fl, cl, lines, out);
 		if (checker == 1)
 			return (1);
 	}
