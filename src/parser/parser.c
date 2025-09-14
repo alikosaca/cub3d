@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 14:45:35 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/14 15:37:02 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/14 15:45:13 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 static int	read_file(char **grid[], char *file)
 {
-	int		fd;
-	int		height;
+	int	fd;
+	int	height;
 
 	fd = -1;
 	if (!get_file_height(&height, file, fd))
