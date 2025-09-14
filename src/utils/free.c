@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 00:09:47 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/10 04:42:20 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/14 15:56:44 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	_free(void **ptr)
 {
-	if (!ptr)
+	if (!(*ptr))
 		return ;
 	free((*ptr));
 	(*ptr) = NULL;
@@ -24,7 +24,7 @@ void	__free(void ***ptr)
 {
 	size_t	i;
 
-	if (!ptr)
+	if (!(*ptr))
 		return ;
 	i = 0;
 	while ((*ptr)[i])
