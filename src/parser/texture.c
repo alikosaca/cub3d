@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 02:24:01 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/14 14:14:36 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/14 15:21:50 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,23 @@ static int	set_tex(t_tex *tex, char **lines, int *out)
 	return ((*out));
 }
 
-int	init_tex(t_tex *tex, char **lines, int *out)
+int	init_tex(t_tex *tex, char *grid[], int *i)
 {
-	int	checker;
+	int		out;
+	int		checker;
+	char	**lines;
 
-	if (is_tex(lines, out))
+	lines = get_split_lines(grid[(*i)]);
+	if (!lines)
+		return (1);
+	if (is_tex(lines, &out))
 	{
-		checker = set_tex(tex, lines, out);
+		checker = set_tex(tex, lines, &out);
 		if (checker == 1)
-			return (1);
-		if (is_xpm_file(tex, out))
-			return (1);
+			return (__free((void ***)&lines), 1);
+		if (is_xpm_file(tex, &out))
+			return (__free((void ***)&lines), 1);
 	}
+	__free((void ***)&lines);
 	return (0);
 }

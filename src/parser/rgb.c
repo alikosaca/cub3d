@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 19:22:39 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/14 14:16:06 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/14 15:37:30 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	is_rgb(char **lines, int *out)
 	return ((*out));
 }
 
-static int	set_rgb(t_rgb *fl, t_rgb *cl, char **lines, int *out)
+static int	set_rgb(t_rgb *fl, t_rgb *cl, char *lines[], int *out)
 {
 	if (!lines[1])
 		return (print(ERR_MISS_RGB));
@@ -36,18 +36,24 @@ static int	set_rgb(t_rgb *fl, t_rgb *cl, char **lines, int *out)
 	return (0);
 }
 
-int	init_rgb(t_rgb *fl, t_rgb *cl, char **lines, int *out)
+int	init_rgb(t_rgb *fl, t_rgb *cl, char *grid[], int *i)
 {
 	static bool	initialized;
+	int			out;
 	int			checker;
+	char		**lines;
 
+	lines = get_split_lines(grid[(*i)]);
+	if (!lines)
+		return (1);
 	if (!initialized)
 		init_rgb_values(fl, cl, &initialized);
-	if (is_rgb(lines, out))
+	if (is_rgb(lines, &out))
 	{
-		checker = set_rgb(fl, cl, lines, out);
+		checker = set_rgb(fl, cl, lines, &out);
 		if (checker == 1)
-			return (1);
+			return (__free((void ***)&lines), 1);
 	}
+	__free((void ***)&lines);
 	return (0);
 }
