@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 19:29:39 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/16 16:41:19 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/16 18:16:53 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,6 @@ int	get_file_height(int *height, char *file, int fd)
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		if (line[0] == '\n')
-		{
-			_free((void **)&line);
-			continue ;
-		}
 		_free((void **)&line);
 		(*height)++;
 	}
@@ -40,16 +35,14 @@ int	get_file_height(int *height, char *file, int fd)
 
 static int	strip_newline(char **line)
 {
-	int	j;
+	int	i;
 
-	j = 0;
-	if ((*line)[j] == '\n')
-		return (_free((void **)line), 1);
-	while ((*line)[j])
+	i = 0;
+	while ((*line)[i])
 	{
-		if ((*line)[j] == '\n')
-			(*line)[j] = '\0';
-		j++;
+		if ((*line)[i] == '\n')
+			(*line)[i] = '\0';
+		i++;
 	}
 	return (0);
 }
