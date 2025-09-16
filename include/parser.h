@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:26:53 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/14 15:37:48 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/16 17:12:03 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_map
 
 typedef struct s_pars
 {
+	int		count;
 	t_tex	tex;
 	t_rgb	fl;
 	t_rgb	cl;
@@ -59,12 +60,12 @@ int		check_invalid_whitespace(char *grid[]);
 
 char	**get_split_lines(char *line);
 
-int		init_tex(t_tex *tex, char *grid[], int *i);
+int		init_tex(t_pars *pars, char *grid[], int *i);
 int		is_xpm_file(t_tex *tex, int *out);
 
-int		init_rgb(t_rgb *fl, t_rgb *cl, char *grid[], int *i);
+int		init_rgb(t_pars *pars, char *grid[], int *i);
 void	init_rgb_values(t_rgb *fl, t_rgb *cl, bool *initialized);
-int		set_rgb_values(t_rgb *fl, t_rgb *cl, char **lines, int *out);
+int		set_rgb_values(t_pars *pars, char **lines, int *out);
 
 int		init_map(t_pars *pars, t_map *map);
 
