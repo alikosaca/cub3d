@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 13:00:10 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/17 14:15:46 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/17 15:24:44 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,8 @@ int	fill_map(t_map *map, char *grid[], int *i)
 {
 	int	j;
 	int	k;
-	int	len;
 
 	j = 0;
-	len = ft_strlen(grid[(*i)]);
 	while (j < map->h)
 	{
 		k = 0;
