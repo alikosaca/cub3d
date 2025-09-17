@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 14:45:35 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/16 17:09:15 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/17 13:07:39 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,20 @@ static int	init_pars(t_pars *pars, char *grid[])
 {
 	int	i;
 
-	i = 0;
-	while (grid[i])
+	i = -1;
+	while (grid[++i])
 	{
+		if (grid[i][0] == '\0')
+			continue ;
+		if (pars->count == 6)
+			break ;
 		if (init_tex(pars, grid, &i))
 			return (1);
 		if (init_rgb(pars, grid, &i))
 			return (1);
-		i++;
 	}
+	if (init_map(pars, &pars->map, grid, &i))
+		return (1);
 	return (0);
 }
 
