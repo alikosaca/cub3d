@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 15:34:46 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/21 14:13:40 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/09/21 15:02:03 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,24 @@
 # include "parser.h"
 # include "mlx.h"
 
+typedef struct s_tex_path
+{
+	void	*no;
+	void	*so;
+	void	*we;
+	void	*ea;
+}	t_tex_path;
+
 typedef struct s_exec
 {
-	void	*mlx;
-	void	*win;
+	void		*mlx;
+	void		*win;
+	t_tex_path	*tex_path;
 }	t_exec;
-
-
 
 int	executor(t_exec *exec, t_pars *pars);
 int	init_mlx(void **mlx);
 int	create_win(void **mlx, void **win, int p_x, int p_y);
+int	create_xpm(void *mlx, t_tex_path **path);
 
 #endif

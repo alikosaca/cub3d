@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 12:15:35 by akosaca           #+#    #+#             */
-/*   Updated: 2025/09/21 14:14:06 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/09/21 15:04:21 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static int	init_game(t_exec **exec, t_pars *pars)
 	if (init_mlx(&(*exec)->mlx))
 		return (1);
 	if (create_win(&(*exec)->mlx, &(*exec)->win, x_line, y_line))
+		return (1);
+	if (create_xpm((*exec)->mlx, &(*exec)->tex_path))
 		return (1);
 	return (0);
 }
