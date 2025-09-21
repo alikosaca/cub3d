@@ -6,25 +6,37 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 12:15:35 by akosaca           #+#    #+#             */
-/*   Updated: 2025/09/21 13:13:22 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/09/21 14:14:06 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	init_game(void **mlx)
+static int	init_game(t_exec **exec, t_pars *pars)
 {
-	if (init_mlx(mlx))
-		returen (1);
+	int x_line;
+	int y_line;
+
+	x_line = pars->map.max_w;
+	y_line = pars->map.h;
+	if (init_mlx(&(*exec)->mlx))
+		return (1);
+	if (create_win(&(*exec)->mlx, &(*exec)->win, x_line, y_line))
+		return (1);
 	return (0);
 }
 
 int	executor(t_exec *exec, t_pars *pars)
 {
-	(void)pars;
-	if (init_game(&exec->mlx))
+	if (init_game(&exec, pars))
 		return (1);
-	mlx_destroy_display(exec->mlx);
-	_free(&exec->mlx);
+	if (exec->win)
+		mlx_destroy_window(exec->mlx, exec->win);
+	if (exec->mlx)
+	{
+		mlx_destroy_display(exec->mlx);
+		_free(&exec->mlx);	
+	}
+	exec->win = NULL;
 	return (0);
 }
