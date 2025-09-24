@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 02:24:01 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/16 16:53:49 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/24 12:58:57 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	is_tex(char **lines, int *out)
 	return ((*out));
 }
 
-static int	set_tex(t_pars *pars, char **lines, int *out)
+static int	set_tex(t_pars *pars, char **lines, int *out, int *count)
 {
 	t_tex	*tex;
 
@@ -49,22 +49,22 @@ static int	set_tex(t_pars *pars, char **lines, int *out)
 		tex->ea = ft_strdup(lines[1]);
 	else
 		return (print(ERR_DUP_TEX));
-	pars->count++;
+	(*count)++;
 	return ((*out));
 }
 
-int	init_tex(t_pars *pars, char *grid[], int *i)
+int	init_tex(t_pars *pars, char *grid[], int i, int *count)
 {
 	int		out;
 	int		checker;
 	char	**lines;
 
-	lines = get_split_lines(grid[(*i)]);
+	lines = get_split_lines(grid[i]);
 	if (!lines)
 		return (1);
 	if (is_tex(lines, &out))
 	{
-		checker = set_tex(pars, lines, &out);
+		checker = set_tex(pars, lines, &out, count);
 		if (checker == 1)
 			return (__free((void ***)&lines), 1);
 		if (is_xpm_file(&pars->tex, &out))

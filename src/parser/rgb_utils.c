@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 15:00:05 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/16 17:12:32 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/24 12:44:02 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_rgb_values(t_rgb *fl, t_rgb *cl, bool *initialized)
 	(*initialized) = true;
 }
 
-static int	set_fl_or_cl(t_pars *pars, char **rgb_values, int *out)
+static int	set_fl_or_cl(t_pars *pars, char **rgb_values, int *out, int *count)
 {
 	t_rgb	*fl;
 	t_rgb	*cl;
@@ -35,7 +35,7 @@ static int	set_fl_or_cl(t_pars *pars, char **rgb_values, int *out)
 		fl->r = ft_atoi(rgb_values[0]);
 		fl->g = ft_atoi(rgb_values[1]);
 		fl->b = ft_atoi(rgb_values[2]);
-		pars->count++;
+		(*count)++;
 		return (0);
 	}
 	else if ((*out) == 7 && (cl->r == -1 && cl->g == -1 && cl->b == -1))
@@ -43,7 +43,7 @@ static int	set_fl_or_cl(t_pars *pars, char **rgb_values, int *out)
 		cl->r = ft_atoi(rgb_values[0]);
 		cl->g = ft_atoi(rgb_values[1]);
 		cl->b = ft_atoi(rgb_values[2]);
-		pars->count++;
+		(*count)++;
 		return (0);
 	}
 	else
@@ -72,7 +72,7 @@ static int	check_rgb_values(char **rgb_values)
 	return (0);
 }
 
-int	set_rgb_values(t_pars *pars, char **lines, int *out)
+int	set_rgb_values(t_pars *pars, char **lines, int *out, int *count)
 {
 	char	**rgb_values;
 
@@ -85,7 +85,7 @@ int	set_rgb_values(t_pars *pars, char **lines, int *out)
 		return (__free((void ***)&rgb_values), print(ERR_RGB_OVERFLOW));
 	if (check_rgb_values(rgb_values))
 		return (__free((void ***)&rgb_values), 1);
-	if (set_fl_or_cl(pars, rgb_values, out))
+	if (set_fl_or_cl(pars, rgb_values, out, count))
 		return (__free((void ***)&rgb_values), 1);
 	__free((void ***)&rgb_values);
 	return (0);

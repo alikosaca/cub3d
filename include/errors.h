@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 18:43:24 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/17 13:18:09 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/24 12:57:56 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define ERR_RGB_NOT_NUM "RGB value(s) must be a positive integer without sign"
 # define ERR_RGB_OUT_OF_RANGE "RGB color value(s) must be between 0 and 255"
 # define ERR_DUP_RGB "Map file has duplicate RGB color definition"
+# define ERR_NOT_ALL_SET "Not all required values are set"
 # define ERR_MISS_MAP "Map file has missing map section"
 
 #endif

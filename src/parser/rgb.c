@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 19:22:39 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/16 16:58:58 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/24 12:59:10 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,32 +25,32 @@ static int	is_rgb(char **lines, int *out)
 	return ((*out));
 }
 
-static int	set_rgb(t_pars *pars, char *lines[], int *out)
+static int	set_rgb(t_pars *pars, char *lines[], int *out, int *count)
 {
 	if (!lines[1])
 		return (print(ERR_MISS_RGB));
 	if (lines[2])
 		return (print(ERR_MULTI_RGB));
-	if (set_rgb_values(pars, lines, out))
+	if (set_rgb_values(pars, lines, out, count))
 		return (1);
 	return (0);
 }
 
-int	init_rgb(t_pars *pars, char *grid[], int *i)
+int	init_rgb(t_pars *pars, char *grid[], int i, int *count)
 {
 	static bool	initialized;
 	int			out;
 	int			checker;
 	char		**lines;
 
-	lines = get_split_lines(grid[(*i)]);
+	lines = get_split_lines(grid[i]);
 	if (!lines)
 		return (1);
 	if (!initialized)
 		init_rgb_values(&pars->fl, &pars->cl, &initialized);
 	if (is_rgb(lines, &out))
 	{
-		checker = set_rgb(pars, lines, &out);
+		checker = set_rgb(pars, lines, &out, count);
 		if (checker == 1)
 			return (__free((void ***)&lines), 1);
 	}

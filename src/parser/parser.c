@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 14:45:35 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/17 13:07:39 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/24 12:59:56 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,23 @@ static int	read_file(char **grid[], char *file)
 static int	init_pars(t_pars *pars, char *grid[])
 {
 	int	i;
+	int	count;
 
 	i = -1;
+	count = 0;
 	while (grid[++i])
 	{
 		if (grid[i][0] == '\0')
 			continue ;
-		if (pars->count == 6)
+		if (count == 6)
 			break ;
-		if (init_tex(pars, grid, &i))
+		if (init_tex(pars, grid, i, &count))
 			return (1);
-		if (init_rgb(pars, grid, &i))
+		if (init_rgb(pars, grid, i, &count))
 			return (1);
 	}
+	if (count != 6)
+		return (print(ERR_NOT_ALL_SET));
 	if (init_map(pars, &pars->map, grid, &i))
 		return (1);
 	return (0);
