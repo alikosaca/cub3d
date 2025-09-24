@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 19:29:39 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/16 18:16:53 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/24 15:15:16 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	get_file_height(int *height, char *file, int fd)
 	return ((*height));
 }
 
-static int	strip_newline(char **line)
+static void	strip_newline(char **line)
 {
 	int	i;
 
@@ -44,7 +44,6 @@ static int	strip_newline(char **line)
 			(*line)[i] = '\0';
 		i++;
 	}
-	return (0);
 }
 
 int	fill_grid(char **grid[], char *file, int fd)
@@ -61,8 +60,7 @@ int	fill_grid(char **grid[], char *file, int fd)
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		if (strip_newline(&line))
-			continue ;
+		strip_newline(&line);
 		(*grid)[i] = ft_strdup(line);
 		if (!(*grid)[i])
 			return (_free((void **)&line), close(fd), 1);
