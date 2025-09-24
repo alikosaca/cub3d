@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 18:43:24 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/24 19:44:22 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/24 21:12:55 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@
 # define ERR_DUP_RGB "Map file has duplicate RGB color definition"
 # define ERR_PREMATURE_MAP "Map section cannot start before all values are set"
 # define ERR_MISS_MAP "Map file has missing map section"
+# define ERR_MAP_TOO_SMALL "Map file must have at least 3 rows"
 
 #endif
