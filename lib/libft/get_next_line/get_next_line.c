@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 13:45:35 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/02 12:14:12 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/24 21:28:31 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,7 @@ static char	*get_line(char *save)
 		i++;
 	}
 	if (save[i] == '\n')
-		line[i] = '\n';
-	i++;
+		line[i++] = '\n';
 	line[i] = '\0';
 	return (line);
 }
