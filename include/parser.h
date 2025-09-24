@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:26:53 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/24 12:59:20 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/24 14:54:08 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int		get_file_height(int *height, char *file, int fd);
 int		fill_grid(char **grid[], char *file, int fd);
 int		check_invalid_whitespace(char *grid[]);
 
+int		is_identifier(char *line);
+int		is_mapline(char *line);
 char	**get_split_lines(char *line);
 
 int		init_tex(t_pars *pars, char *grid[], int i, int *count);
