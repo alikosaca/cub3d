@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 14:45:35 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/24 14:53:33 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/24 20:53:41 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,27 +51,31 @@ static int	check_file(char *grid[])
 
 static int	init_pars(t_pars *pars, char *grid[])
 {
+	int	c;
 	int	i;
-	int	count;
 
+	c = 0;
 	i = -1;
-	count = 0;
 	while (grid[++i])
 	{
 		if (grid[i][0] == '\0')
 			continue ;
-		if (count == 6)
-			break ;
-		if (init_tex(pars, grid, i, &count))
-			return (1);
-		if (init_rgb(pars, grid, i, &count))
-			return (1);
+		if (is_identifier(grid[i]))
+		{
+			if (init_tex(pars, grid, i, &c) || init_rgb(pars, grid, i, &c))
+				return (1);
+			continue ;
+		}
+		else if (is_mapline(grid[i]))
+		{
+			if (c != 6)
+				return (print(ERR_PREMATURE_MAP));
+			if (init_map(pars, grid, i))
+				return (1);
+			return (0);
+		}
 	}
-	if (count != 6)
-		return (print(ERR_NOT_ALL_SET));
-	if (init_map(pars, &pars->map, grid, &i))
-		return (1);
-	return (0);
+	return (!(pars->map.map) && print(ERR_MISS_MAP));
 }
 
 int	parser(t_pars *pars, char *file)

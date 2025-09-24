@@ -6,39 +6,34 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 13:00:10 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/17 15:24:44 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/24 20:55:18 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-int	set_map_height(int *height, char *grid[], int *i)
+int	set_map_height(int *height, char *grid[], int i)
 {
-	int	j;
-
-	j = (*i);
-	while (grid[j])
+	while (grid[i])
 	{
 		(*height)++;
-		j++;
+		i++;
 	}
 	return ((*height));
 }
 
-void	set_map_max_width(int *max_width, char *grid[], int *i)
+void	set_map_max_width(int *max_width, char *grid[], int i)
 {
-	int	j;
 	int	len;
 	int	max;
 
-	j = (*i);
 	max = 0;
-	while (grid[j])
+	while (grid[i])
 	{
-		len = ft_strlen(grid[j]);
+		len = ft_strlen(grid[i]);
 		if (len > max)
 			max = len;
-		j++;
+		i++;
 	}
 	(*max_width) = max;
 }
@@ -58,7 +53,7 @@ void	*alloc_map_rows(char **map[], int max_width, int height)
 	return ((void *)1);
 }
 
-int	fill_map(t_map *map, char *grid[], int *i)
+int	fill_map(t_map *map, char *grid[], int i)
 {
 	int	j;
 	int	k;
@@ -67,9 +62,9 @@ int	fill_map(t_map *map, char *grid[], int *i)
 	while (j < map->h)
 	{
 		k = 0;
-		while (grid[(*i)][k])
+		while (grid[i][k])
 		{
-			map->map[j][k] = grid[(*i)][k];
+			map->map[j][k] = grid[i][k];
 			k++;
 		}
 		while (k < map->max_w)
@@ -78,7 +73,7 @@ int	fill_map(t_map *map, char *grid[], int *i)
 			k++;
 		}
 		map->map[j][k] = '\0';
-		(*i)++;
+		i++;
 		j++;
 	}
 	map->map[j] = NULL;

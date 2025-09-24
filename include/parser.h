@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:26:53 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/24 14:54:08 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/24 20:55:34 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,11 @@ int		init_rgb(t_pars *pars, char *grid[], int i, int *count);
 void	init_rgb_values(t_rgb *fl, t_rgb *cl, bool *initialized);
 int		set_rgb_values(t_pars *pars, char **lines, int *out, int *count);
 
-int		init_map(t_pars *pars, t_map *map, char *grid[], int *i);
-int		set_map_height(int *height, char *grid[], int *i);
-void	set_map_max_width(int *max_width, char *grid[], int *i);
+int		init_map(t_pars *pars, char *grid[], int i);
+int		set_map_height(int *height, char *grid[], int i);
+void	set_map_max_width(int *max_width, char *grid[], int i);
 void	*alloc_map_rows(char **map[], int max_width, int height);
-int		fill_map(t_map *map, char *grid[], int *i);
+int		fill_map(t_map *map, char *grid[], int i);
 
 void	destroy_pars(t_pars *pars);
 
