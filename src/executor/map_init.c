@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   map_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:32:23 by akosaca           #+#    #+#             */
-/*   Updated: 2025/09/26 15:26:24 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/09/27 01:18:59 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executor.h"
+#include <stdio.h>
 
 int	init_mlx(void **mlx)
 {
@@ -20,28 +21,24 @@ int	init_mlx(void **mlx)
 	return (0);
 }
 
-int	create_win(void *mlx, void **win, int p_x, int p_y)
+int	create_win(void *mlx, void **win)
 {
-	int	x_px;
-	int	y_px;
-
-	x_px = p_x * 64;
-	y_px = p_y * 64;
-	win = mlx_new_window(mlx, x_px, y_px, "cub3d");
+	(*win) = mlx_new_window(mlx, SCREEN_WIDTH, SCREEN_HEIGHT, PROJECT_NAME);
 	if (!(*win))
 		return (print(ERR_OPEN_WIN));
 	return (0);
 }
 
-int	create_xpm(void *mlx, t_tex_path path, const t_tex *tex)
+int	create_xpm(void *mlx, t_xpm *xpm, t_tex tex)
 {
-	int x;
-	int y;
-	path.ea = mlx_xpm_file_to_image(mlx, tex->ea, &x, &y);
-	path.no = mlx_xpm_file_to_image(mlx, tex->no, &x, &y);
-	path.so = mlx_xpm_file_to_image(mlx, tex->so, &x, &y);
-	path.we = mlx_xpm_file_to_image(mlx, tex->we, &x, &y);
-	if (!path.ea || !path.no || !path.so || !path.we)
+	int	width;
+	int	height;
+
+	xpm->no = mlx_xpm_file_to_image(mlx, tex.no, &width, &height);
+	xpm->so = mlx_xpm_file_to_image(mlx, tex.so, &width, &height);
+	xpm->we = mlx_xpm_file_to_image(mlx, tex.we, &width, &height);
+	xpm->ea = mlx_xpm_file_to_image(mlx, tex.ea, &width, &height);
+	if (!xpm->ea || !xpm->no || !xpm->so || !xpm->we)
 		return (print(ERR_CREATE_XPM));
-	return(0);
+	return (0);
 }

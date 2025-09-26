@@ -3,28 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 12:15:35 by akosaca           #+#    #+#             */
-/*   Updated: 2025/09/26 15:25:26 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/09/27 01:18:46 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <stdio.h>
+
 static int	init_game(t_exec *exec, t_pars *pars)
 {
-	int	x_line;
-	int	y_line;
-
-	x_line = pars->map.max_w;
-	y_line = pars->map.h;
-	exec->tex_path = (t_tex_path){0};
-	if (init_mlx(&(exec->mlx)))
+	if (init_mlx(&exec->mlx.mlx))
 		return (1);
-	if (create_xpm(exec->mlx, exec->tex_path, &pars->tex))
+	if (create_xpm(exec->mlx.mlx, &exec->xpm, pars->tex))
 		return (1);
-	if (create_win(exec->mlx, &(exec->win), x_line, y_line))
+	if (create_win(exec->mlx.mlx, &exec->mlx.win))
 		return (1);
 	return (0);
 }
@@ -33,6 +28,6 @@ int	executor(t_exec *exec, t_pars *pars)
 {
 	if (init_game(exec, pars))
 		return (1);
-	mlx_loop(exec->mlx);
+	mlx_loop(exec->mlx.mlx);
 	return (0);
 }

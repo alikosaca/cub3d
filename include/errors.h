@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 18:43:24 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/26 15:23:57 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/09/27 00:50:41 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,8 @@
 # define ERR_NO_PLAYER "Map section has no player"
 # define ERR_MULTI_PLAYER "Map section has multiple player"
 
-
 # define ERR_CREATE_MLX "Could not create mlx"
-# define ERR_OPEN_WIN "Could not create window"
 # define ERR_CREATE_XPM "Could not create xpm file"
+# define ERR_OPEN_WIN "Could not create window"
 
 #endif

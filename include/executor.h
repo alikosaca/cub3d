@@ -3,39 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 15:34:46 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/26 15:10:16 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/09/27 01:19:30 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXECUTOR_H
 # define EXECUTOR_H
 
-# include "parser.h"
 # include "mlx.h"
+# include "parser.h"
 
-typedef struct s_tex_path
+# define PROJECT_NAME "cub3D"
+# define SCREEN_WIDTH 1280
+# define SCREEN_HEIGHT 720
+
+# define ESC 65307
+
+typedef struct s_pars	t_pars;
+typedef struct s_tex	t_tex;
+
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+}	t_mlx;
+
+typedef struct s_xpm
 {
 	void	*no;
 	void	*so;
 	void	*we;
 	void	*ea;
-}	t_tex_path;
+}	t_xpm;
 
 typedef struct s_exec
 {
-	void		*mlx;
-	void		*win;
-	t_tex_path	tex_path;
+	t_mlx	mlx;
+	t_xpm	xpm;
 }	t_exec;
 
-int	executor(t_exec *exec, t_pars *pars);
-int	init_mlx(void **mlx);
-int	create_win(void *mlx, void **win, int p_x, int p_y);
-int	create_xpm(void *mlx, t_tex_path path, const t_tex *tex);
+int		executor(t_exec *exec, t_pars *pars);
 
-t_tex_path	init_tex_path();
+int		init_mlx(void **mlx);
+int		create_xpm(void *mlx, t_xpm *xpm, t_tex tex);
+int		create_win(void *mlx, void **win);
 
 #endif
