@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 15:34:46 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/27 01:50:40 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/27 02:01:58 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,7 @@ void	init_hooks(t_game *game, void *mlx);
 
 int		destroy_window(void *ptr);
 int		destroy_window_with_esc(int keycode, void *ptr);
+
+void	destroy_exec(t_exec *exec);
 
 #endif
