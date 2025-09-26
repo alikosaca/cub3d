@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 12:15:35 by akosaca           #+#    #+#             */
-/*   Updated: 2025/09/26 15:15:38 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/09/26 15:25:26 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,7 @@ static int	init_game(t_exec *exec, t_pars *pars)
 int	executor(t_exec *exec, t_pars *pars)
 {
 	if (init_game(exec, pars))
-	{
-		printf("we have problem \n");
 		return (1);
-	}
 	mlx_loop(exec->mlx);
 	return (0);
 }
