@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 12:15:35 by akosaca           #+#    #+#             */
-/*   Updated: 2025/09/27 01:18:46 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/27 01:44:26 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@ static int	init_game(t_exec *exec, t_pars *pars)
 	return (0);
 }
 
-int	executor(t_exec *exec, t_pars *pars)
+int	executor(t_game *game, t_exec *exec, t_pars *pars)
 {
 	if (init_game(exec, pars))
 		return (1);
+	init_hooks(game, exec->mlx.win);
 	mlx_loop(exec->mlx.mlx);
 	return (0);
 }

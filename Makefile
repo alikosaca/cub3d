@@ -33,7 +33,9 @@ PRS       = $(SRC_DIR)/$(PRS_DIR)/parser.c \
             $(SRC_DIR)/$(PRS_DIR)/map_utils.c \
             $(SRC_DIR)/$(PRS_DIR)/destroy.c
 EXC       = $(SRC_DIR)/$(EXC_DIR)/executor.c \
-            $(SRC_DIR)/$(EXC_DIR)/map_init.c
+            $(SRC_DIR)/$(EXC_DIR)/map_init.c \
+            $(SRC_DIR)/$(EXC_DIR)/hooks.c \
+            $(SRC_DIR)/$(EXC_DIR)/exit.c
 UTL       = $(SRC_DIR)/$(UTL_DIR)/print.c \
             $(SRC_DIR)/$(UTL_DIR)/alloc.c \
             $(SRC_DIR)/$(UTL_DIR)/free.c

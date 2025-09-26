@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/02 16:29:37 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/27 01:54:49 by yaycicek         ###   ########.fr       */
+/*   Created: 2025/09/27 01:42:28 by yaycicek          #+#    #+#             */
+/*   Updated: 2025/09/27 01:47:33 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "cub3d.h"
 
-# include <fcntl.h> 
-
-# include "errors.h"
-# include "utils.h"
-# include "parser.h"
-# include "executor.h"
-
-typedef struct s_game
+void	init_hooks(t_game *game, void *win)
 {
-	t_pars	pars;
-	t_exec	exec;
-}	t_game;
-
-void	verify(int argc, char *argv);
-int		cleanup(t_game *game);
-#endif
+	mlx_hook(win, 17, 0, destroy_window, game);
+	mlx_hook(win, 2, 1L << 0, destroy_window_with_esc, game);
+}

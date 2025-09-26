@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/02 16:29:37 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/27 01:54:49 by yaycicek         ###   ########.fr       */
+/*   Created: 2025/09/27 01:24:51 by yaycicek          #+#    #+#             */
+/*   Updated: 2025/09/27 01:55:53 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "cub3d.h"
 
-# include <fcntl.h> 
-
-# include "errors.h"
-# include "utils.h"
-# include "parser.h"
-# include "executor.h"
-
-typedef struct s_game
+int	destroy_window(void *ptr)
 {
-	t_pars	pars;
-	t_exec	exec;
-}	t_game;
+	exit(cleanup((t_game *)ptr));
+}
 
-void	verify(int argc, char *argv);
-int		cleanup(t_game *game);
-#endif
+int	destroy_window_with_esc(int keycode, void *ptr)
+{
+	if (keycode == ESC)
+		exit(cleanup((t_game *)ptr));
+	return (0);
+}

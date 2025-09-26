@@ -6,13 +6,13 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 05:00:05 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/27 01:10:04 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/27 01:55:02 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	cleanup(t_game *game)
+int	cleanup(t_game *game)
 {
 	destroy_pars(&game->pars);
 	if (game->exec.xpm.no)
@@ -30,4 +30,5 @@ void	cleanup(t_game *game)
 		mlx_destroy_display(game->exec.mlx.mlx);
 		_free(&game->exec.mlx.mlx);
 	}
+	return (0);
 }

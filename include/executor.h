@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 15:34:46 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/27 01:19:30 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/27 01:50:40 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@
 
 # define ESC 65307
 
-typedef struct s_pars	t_pars;
-typedef struct s_tex	t_tex;
+typedef struct s_game	t_game;
 
 typedef struct s_mlx
 {
@@ -45,10 +44,15 @@ typedef struct s_exec
 	t_xpm	xpm;
 }	t_exec;
 
-int		executor(t_exec *exec, t_pars *pars);
+int		executor(t_game *game, t_exec *exec, t_pars *pars);
 
 int		init_mlx(void **mlx);
 int		create_xpm(void *mlx, t_xpm *xpm, t_tex tex);
 int		create_win(void *mlx, void **win);
+
+void	init_hooks(t_game *game, void *mlx);
+
+int		destroy_window(void *ptr);
+int		destroy_window_with_esc(int keycode, void *ptr);
 
 #endif
