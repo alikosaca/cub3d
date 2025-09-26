@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 15:34:46 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/26 15:03:52 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/09/26 15:10:16 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_exec
 
 int	executor(t_exec *exec, t_pars *pars);
 int	init_mlx(void **mlx);
-int	create_win(void **mlx, void **win, int p_x, int p_y);
+int	create_win(void *mlx, void **win, int p_x, int p_y);
 int	create_xpm(void *mlx, t_tex_path path, const t_tex *tex);
 
 t_tex_path	init_tex_path();

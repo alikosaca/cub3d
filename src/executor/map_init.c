@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:32:23 by akosaca           #+#    #+#             */
-/*   Updated: 2025/09/26 15:00:25 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/09/26 15:10:36 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,18 @@ int	init_mlx(void **mlx)
 	return (0);
 }
 
+int	create_win(void *mlx, void **win, int p_x, int p_y)
+{
+	int	x_px;
+	int	y_px;
+
+	x_px = p_x * 64;
+	y_px = p_y * 64;
+	win = mlx_new_window(mlx, x_px, y_px, "cub3d");
+	if (!(*win))
+		return (1);
+	return (0);
+}
 
 int	create_xpm(void *mlx, t_tex_path path, const t_tex *tex)
 {
