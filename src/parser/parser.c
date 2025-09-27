@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 14:45:35 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/24 20:53:41 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/27 23:57:33 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ int	parser(t_pars *pars, char *file)
 	if (check_file(grid))
 		return (__free((void ***)&grid), 1);
 	if (init_pars(pars, grid))
+		return (__free((void ***)&grid), 1);
+	if (validate_map(&pars->map))
 		return (__free((void ***)&grid), 1);
 	__free((void ***)&grid);
 	return (0);

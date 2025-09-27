@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 18:43:24 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/27 00:50:41 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/28 00:29:13 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 # define ERR_MAP_TOO_SMALL "Map section must have at least 3 rows"
 # define ERR_NO_PLAYER "Map section has no player"
 # define ERR_MULTI_PLAYER "Map section has multiple player"
+# define ERR_TRAIL_NL "Map section contains extra newline(s) at the end"
 
 # define ERR_CREATE_MLX "Could not create mlx"
 # define ERR_CREATE_XPM "Could not create xpm file"
