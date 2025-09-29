@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 14:45:35 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/27 23:57:33 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/29 17:27:02 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	read_file(char **grid[], char *file)
 		return (print(ERR_EMPTY_MAP));
 	if (!__alloc((void ***)grid, height + 1, sizeof(char *)))
 		return (1);
-	if (fill_grid(grid, file, fd))
+	if (fill_grid((*grid), file, fd))
 		return (1);
 	if (check_invalid_whitespace((*grid)))
 		return (print(ERR_INVALID_WHITESPACE));
@@ -82,7 +82,6 @@ int	parser(t_pars *pars, char *file)
 {
 	char	**grid;
 
-	grid = NULL;
 	if (read_file(&grid, file))
 		return (__free((void ***)&grid), 1);
 	if (check_file(grid))

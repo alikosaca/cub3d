@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 19:29:39 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/24 15:15:16 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/09/29 17:27:41 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	strip_newline(char **line)
 	}
 }
 
-int	fill_grid(char **grid[], char *file, int fd)
+int	fill_grid(char *grid[], char *file, int fd)
 {
 	int		i;
 	char	*line;
@@ -61,13 +61,13 @@ int	fill_grid(char **grid[], char *file, int fd)
 		if (!line)
 			break ;
 		strip_newline(&line);
-		(*grid)[i] = ft_strdup(line);
-		if (!(*grid)[i])
+		grid[i] = ft_strdup(line);
+		if (!grid[i])
 			return (_free((void **)&line), close(fd), 1);
 		_free((void **)&line);
 		i++;
 	}
-	(*grid)[i] = NULL;
+	grid[i] = NULL;
 	close(fd);
 	return (0);
 }
