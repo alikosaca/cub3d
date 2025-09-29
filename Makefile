@@ -67,7 +67,7 @@ fclean: clean
 re: fclean all
 
 norm:
-	@norminette src include
+	@norminette lib/libft src include
 
 term:
 	@valgrind \
