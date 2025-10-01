@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 23:41:54 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/10/01 15:21:37 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/10/01 15:24:22 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	check_map_duplicate_rows(char *map[])
 	while (map[i])
 	{
 		j = 0;
-		while (map[i][++j])
+		while (map[i][j])
 		{
 			if (map[i][j] != ' ')
 				break ;
