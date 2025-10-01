@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 13:00:10 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/10/01 13:37:03 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/10/01 14:57:38 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,30 +55,6 @@ int	alloc_map(char **map[], int h, int max_w)
 	return (0);
 }
 
-static int	set_player_info(t_map *map, int x, int y, char c)
-{
-	static int	initialized;
-
-	if (!initialized)
-	{
-		map->p_x = -1;
-		map->p_y = -1;
-		initialized = true;
-	}
-	if (c == '\0')
-		return ((map->p_x == -1 && map->p_y == -1) && print(ERR_NO_PLAYER));
-	if (ft_strchr("NSEW", c))
-	{
-		if (map->p_x != -1 && map->p_y != -1)
-			return (print(ERR_MULTI_PLAYER));
-		map->p_x = x;
-		map->p_y = y;
-		map->p_dir = c;
-		return (0);
-	}
-	return (0);
-}
-
 int	fill_map(t_map *map, char *grid[], int i)
 {
 	int	j;
@@ -90,8 +66,6 @@ int	fill_map(t_map *map, char *grid[], int i)
 		k = 0;
 		while (grid[i][k])
 		{
-			if (set_player_info(map, k, j, grid[i][k]))
-				return (1);
 			map->map[j][k] = grid[i][k];
 			k++;
 		}
@@ -105,5 +79,34 @@ int	fill_map(t_map *map, char *grid[], int i)
 		j++;
 	}
 	map->map[j] = NULL;
-	return (set_player_info(map, -1, -1, '\0'));
+	return (0);
+}
+
+int	set_player_values(char *map[], int p_y, int p_x, char p_dir)
+{
+	int	i;
+	int	j;
+
+	p_y = -1;
+	p_x = -1;
+	i = -1;
+	while (map[++i])
+	{
+		j = -1;
+		while (map[i][++j])
+		{
+			if (ft_strchr("NSEW", map[i][j]))
+			{
+				if (p_y == -1 && p_x == -1)
+				{
+					p_y = i;
+					p_x = j;
+					p_dir = map[i][j];
+				}
+				else
+					return (print(ERR_MULTI_PLAYER));
+			}
+		}
+	}
+	return ((p_y == -1 && p_x == -1) && print(ERR_NO_PLAYER));
 }
