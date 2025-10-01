@@ -6,13 +6,13 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 12:12:27 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/10/01 13:09:47 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/10/01 13:42:20 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-int	create_map_copy(char **copy[], char *map[], int h, int max_w)
+int	alloc_copy(char **copy[], char *map[], int h, int max_w)
 {
 	int	i;
 	int	j;
