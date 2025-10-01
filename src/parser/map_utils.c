@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 13:00:10 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/10/01 13:21:09 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/10/01 13:37:03 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,20 @@ void	set_map_max_width(int *max_w, char *grid[], int i)
 	(*max_w) = max;
 }
 
-void	*alloc_map_rows(char **map[], int max_w, int h)
+int	alloc_map(char **map[], int h, int max_w)
 {
 	int	i;
 
+	if (!__alloc((void ***)map, h + 1, sizeof(char *)))
+		return (1);
 	i = 0;
 	while (i < h)
 	{
-		(*map)[i] = _alloc((void **)&(*map)[i], max_w + 1, sizeof(char));
-		if (!(*map)[i])
-			return (NULL);
+		if (!_alloc((void **)&(*map)[i], max_w + 1, sizeof(char)))
+			return (1);
 		i++;
 	}
-	return ((void *)1);
+	return (0);
 }
 
 static int	set_player_info(t_map *map, int x, int y, char c)
