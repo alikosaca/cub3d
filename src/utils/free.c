@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 00:09:47 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/14 15:56:44 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/10/01 15:45:41 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,4 @@ void	__free(void ***ptr)
 	}
 	free((*ptr));
 	(*ptr) = NULL;
-}
-
-void	_free_(void **f, void **s)
-{
-	_free(f);
-	_free(s);
-}
-
-void	_free__(void **f, void ***s)
-{
-	_free(f);
-	__free(s);
-}
-
-void	__free__(void ***f, void ***s)
-{
-	__free(f);
-	__free(s);
 }

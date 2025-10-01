@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:58:34 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/10 04:42:26 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/10/01 17:12:17 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,5 @@ void	*__alloc(void ***ptr, size_t nmemb, size_t size);
 
 void	_free(void **ptr);
 void	__free(void ***ptr);
-void	_free_(void **f, void **s);
-void	_free__(void **f, void ***s);
-void	__free__(void ***f, void ***s);
 
 #endif
