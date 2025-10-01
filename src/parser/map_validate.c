@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 23:41:54 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/28 00:53:29 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/10/01 13:09:32 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,14 @@ static int	check_map_duplicate_rows(char *map[])
 
 int	validate_map(t_map *map)
 {
+	char	**copy;
+
 	if (check_map_tail(map->map, map->h - 1))
 		return (1);
 	if (check_map_duplicate_rows(map->map))
 		return (1);
+	if (create_map_copy(&copy, map->map, map->h, map->max_w))
+		return (1);
+	__free((void ***)&copy);
 	return (0);
 }
