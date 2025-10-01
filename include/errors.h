@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 18:43:24 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/28 00:52:09 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/10/01 15:20:30 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 # define ERR_MULTI_PLAYER "Map section has multiple player"
 # define ERR_TRAIL_NL "Map section contains extra newline(s) at the end"
 # define ERR_DUP_MAP_ROWS "Map section must not have two consecutive map rows"
+# define ERR_INVALID_MAP_CHAR "Map section contains invalid character(s)"
 
 # define ERR_CREATE_MLX "Could not create mlx"
 # define ERR_CREATE_XPM "Could not create xpm file"
