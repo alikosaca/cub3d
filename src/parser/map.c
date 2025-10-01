@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 18:20:08 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/24 21:13:50 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/10/01 13:20:06 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	init_map(t_pars *pars, char *grid[], int i)
 	set_map_max_width(&map->max_w, grid, i);
 	if (!__alloc((void ***)&map->map, map->h + 1, sizeof(char *)))
 		return (1);
-	if (!alloc_map_rows(&map->map, map->max_w + 1, map->h))
+	if (!alloc_map_rows(&map->map, map->max_w, map->h))
 		return (1);
 	if (fill_map(map, grid, i))
 		return (1);

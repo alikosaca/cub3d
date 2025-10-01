@@ -6,24 +6,24 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 13:00:10 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/25 19:19:55 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/10/01 13:21:09 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 #include <stdio.h>
 
-int	set_map_height(int *height, char *grid[], int i)
+int	set_map_height(int *h, char *grid[], int i)
 {
 	while (grid[i])
 	{
-		(*height)++;
+		(*h)++;
 		i++;
 	}
-	return ((*height));
+	return ((*h));
 }
 
-void	set_map_max_width(int *max_width, char *grid[], int i)
+void	set_map_max_width(int *max_w, char *grid[], int i)
 {
 	int	len;
 	int	max;
@@ -36,17 +36,17 @@ void	set_map_max_width(int *max_width, char *grid[], int i)
 			max = len;
 		i++;
 	}
-	(*max_width) = max;
+	(*max_w) = max;
 }
 
-void	*alloc_map_rows(char **map[], int max_width, int height)
+void	*alloc_map_rows(char **map[], int max_w, int h)
 {
 	int	i;
 
 	i = 0;
-	while (i < height)
+	while (i < h)
 	{
-		(*map)[i] = _alloc((void **)&(*map)[i], max_width, sizeof(char));
+		(*map)[i] = _alloc((void **)&(*map)[i], max_w + 1, sizeof(char));
 		if (!(*map)[i])
 			return (NULL);
 		i++;
