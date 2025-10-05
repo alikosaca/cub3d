@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:26:53 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/10/02 16:17:59 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/10/05 19:59:59 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int		set_map_height(int *h, char *grid[], int i);
 void	set_map_max_width(int *max_w, char *grid[], int i);
 int		alloc_map(char **map[], int h, int max_w);
 int		fill_map(t_map *map, char *grid[], int i);
-int		set_player_values(char *map[], int p_y, int p_x, char p_dir);
+int		set_player_values(char *map[], int *p_y, int *p_x, char *p_dir);
 
 int		validate_map(t_map *map);
 int		alloc_copy(char **copy[], char *map[], int h, int max_w);

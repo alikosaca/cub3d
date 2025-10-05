@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 13:00:10 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/10/01 14:57:38 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/10/05 20:01:15 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,13 @@ int	fill_map(t_map *map, char *grid[], int i)
 	return (0);
 }
 
-int	set_player_values(char *map[], int p_y, int p_x, char p_dir)
+int	set_player_values(char *map[], int *p_y, int *p_x, char *p_dir)
 {
 	int	i;
 	int	j;
 
-	p_y = -1;
-	p_x = -1;
+	(*p_y) = -1;
+	(*p_x) = -1;
 	i = -1;
 	while (map[++i])
 	{
@@ -97,16 +97,16 @@ int	set_player_values(char *map[], int p_y, int p_x, char p_dir)
 		{
 			if (ft_strchr("NSEW", map[i][j]))
 			{
-				if (p_y == -1 && p_x == -1)
+				if ((*p_y) == -1 && (*p_x) == -1)
 				{
-					p_y = i;
-					p_x = j;
-					p_dir = map[i][j];
+					(*p_y) = i;
+					(*p_x) = j;
+					(*p_dir) = map[i][j];
 				}
 				else
 					return (print(ERR_MULTI_PLAYER));
 			}
 		}
 	}
-	return ((p_y == -1 && p_x == -1) && print(ERR_NO_PLAYER));
+	return (((*p_y) == -1 && (*p_x) == -1) && print(ERR_NO_PLAYER));
 }

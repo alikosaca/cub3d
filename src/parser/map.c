@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 18:20:08 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/10/01 13:58:54 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/10/05 20:00:28 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	init_map(t_pars *pars, char *grid[], int i)
 		return (1);
 	if (fill_map(map, grid, i))
 		return (1);
-	if (set_player_values(map->map, map->p_y, map->p_x, map->p_dir))
+	if (set_player_values(map->map, &map->p_y, &map->p_x, &map->p_dir))
 		return (1);
 	return (0);
 }
