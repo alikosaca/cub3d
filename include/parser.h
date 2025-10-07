@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:26:53 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/10/05 19:59:59 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/10/07 20:32:37 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int		set_player_values(char *map[], int *p_y, int *p_x, char *p_dir);
 
 int		validate_map(t_map *map);
 int		alloc_copy(char **copy[], char *map[], int h, int max_w);
-int		flood_fill(t_map *map, char **copy);
+int		flood_fill(t_map *map, char *copy[]);
 char	*is_walkable(char c);
 int		is_out(int y, int x, int h, int max_w);
 int		is_space(char c);
