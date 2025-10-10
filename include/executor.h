@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 15:34:46 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/27 02:01:58 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/10/10 16:46:15 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@
 # define SCREEN_HEIGHT 720
 
 # define ESC 65307
+# define A 97
+# define W 119
+# define S 115
+# define D 100
+# define LOK 65361
+# define ROK 65363
 
 typedef struct s_game	t_game;
 
@@ -51,9 +57,6 @@ int		create_xpm(void *mlx, t_xpm *xpm, t_tex tex);
 int		create_win(void *mlx, void **win);
 
 void	init_hooks(t_game *game, void *mlx);
-
-int		destroy_window(void *ptr);
-int		destroy_window_with_esc(int keycode, void *ptr);
 
 void	destroy_exec(t_exec *exec);
 
