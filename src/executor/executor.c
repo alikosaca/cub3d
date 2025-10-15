@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 12:15:35 by akosaca           #+#    #+#             */
-/*   Updated: 2025/09/27 01:44:26 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/10/14 16:56:23 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static int	init_game(t_exec *exec, t_pars *pars)
 	if (create_xpm(exec->mlx.mlx, &exec->xpm, pars->tex))
 		return (1);
 	if (create_win(exec->mlx.mlx, &exec->mlx.win))
+		return (1);
+	if (read_map(exec->mlx.mlx, exec->mlx.win, pars->map))
 		return (1);
 	return (0);
 }

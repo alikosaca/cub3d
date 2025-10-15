@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 15:34:46 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/10/10 16:46:15 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/10/14 19:03:00 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include "parser.h"
 
 # define PROJECT_NAME "cub3D"
-# define SCREEN_WIDTH 1280
-# define SCREEN_HEIGHT 720
+# define SCREEN_WIDTH 3840
+# define SCREEN_HEIGHT 2160
 
 # define ESC 65307
 # define A 97
@@ -55,9 +55,12 @@ int		executor(t_game *game, t_exec *exec, t_pars *pars);
 int		init_mlx(void **mlx);
 int		create_xpm(void *mlx, t_xpm *xpm, t_tex tex);
 int		create_win(void *mlx, void **win);
+int		read_map(void *mlx, void *win, t_map map);
 
 void	init_hooks(t_game *game, void *mlx);
 
 void	destroy_exec(t_exec *exec);
 
+
+void put_window(void *mlx, void *win, int x, int y, int color);
 #endif

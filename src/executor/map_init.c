@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:32:23 by akosaca           #+#    #+#             */
-/*   Updated: 2025/09/27 01:18:59 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/10/15 11:32:21 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,3 +42,50 @@ int	create_xpm(void *mlx, t_xpm *xpm, t_tex tex)
 		return (print(ERR_CREATE_XPM));
 	return (0);
 }
+
+void put_window(void *mlx, void *win, int x, int y, int color)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i < 10)
+	{
+		j = 0;
+		while (j < 10)
+		{
+			mlx_pixel_put(mlx, win, x + j, y + i, color);
+			j++;
+		}
+		i++;
+	}
+}
+
+int	read_map(void *mlx, void *win, t_map map)
+{
+	(void)map;
+	(void)win;
+	(void)mlx;
+
+	int i = 0;
+	int j = 0;
+	while (i < map.h)
+	{
+		j= 0;
+		while (j < map.max_w)
+		{
+			printf("%c",map.map[i][j]);
+			if (map.map[i][j] == '1')
+				put_window(mlx, win, j * 10, i * 10, 0xFFFF00);
+			else if (map.map[i][j] == '0')
+				put_window(mlx, win, j * 10, i * 10, 0x000000);
+			else if (map.map[i][j] == 'N')
+				put_window(mlx, win, j * 10, i * 10, 0x0000FF);
+			j++;
+		}
+		i++;
+	}
+	printf("\n");
+	return (0);
+}
+
