@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 15:34:46 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/10/14 19:03:00 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/10/17 12:09:45 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@
 # include "parser.h"
 
 # define PROJECT_NAME "cub3D"
-# define SCREEN_WIDTH 3840
-# define SCREEN_HEIGHT 2160
+// # define SCREEN_WIDTH 3840
+// # define SCREEN_HEIGHT 2160
+# define SCREEN_WIDTH 1920
+# define SCREEN_HEIGHT 1000
 
 # define ESC 65307
 # define A 97
@@ -44,10 +46,22 @@ typedef struct s_xpm
 	void	*ea;
 }	t_xpm;
 
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
+	int		width;
+	int		height;
+}	t_img;
+
 typedef struct s_exec
 {
 	t_mlx	mlx;
 	t_xpm	xpm;
+	t_img	img;
 }	t_exec;
 
 int		executor(t_game *game, t_exec *exec, t_pars *pars);
