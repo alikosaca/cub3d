@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 15:34:46 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/10/17 12:09:45 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/10/17 17:07:05 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ int		init_mlx(void **mlx);
 int		create_xpm(void *mlx, t_xpm *xpm, t_tex tex);
 int		create_win(void *mlx, void **win);
 int		read_map(void *mlx, void *win, t_map map);
+int		init_img_data(t_img *img_data, void *mlx);
 
 void	init_hooks(t_game *game, void *mlx);
-
 void	destroy_exec(t_exec *exec);
 
 

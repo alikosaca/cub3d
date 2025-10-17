@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:32:23 by akosaca           #+#    #+#             */
-/*   Updated: 2025/10/15 11:32:21 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/10/17 17:07:49 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ int	read_map(void *mlx, void *win, t_map map)
 		j= 0;
 		while (j < map.max_w)
 		{
-			printf("%c",map.map[i][j]);
 			if (map.map[i][j] == '1')
 				put_window(mlx, win, j * 10, i * 10, 0xFFFF00);
 			else if (map.map[i][j] == '0')
@@ -85,7 +84,22 @@ int	read_map(void *mlx, void *win, t_map map)
 		}
 		i++;
 	}
-	printf("\n");
 	return (0);
 }
+#include <stdio.h>
 
+int	init_img_data(t_img *img_data, void *mlx)
+{
+	img_data->img = mlx_new_image(mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+	if (!img_data->img)
+		return (print(ERR_CREATE_IMG));
+
+	img_data->addr = mlx_get_data_addr(
+		img_data->img,
+		&img_data->bpp, 
+		&img_data->line_length,
+		&img_data->endian);
+	if (!img_data->addr)
+		return (print(ERR_INIT_ADDR));
+	return (0);
+}
