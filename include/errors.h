@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 18:43:24 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/10/17 16:20:41 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/10/17 17:03:17 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,9 @@
 # define ERR_MULTI_MAP "Map section cannot contain more than one map"
 
 # define ERR_CREATE_MLX "Could not create mlx"
-# define ERR_CREATE_IMG "Could not create image"
 # define ERR_CREATE_XPM "Could not create xpm file"
+# define ERR_CREATE_IMG "Could not create image"
 # define ERR_OPEN_WIN "Could not create window"
+# define ERR_INIT_ADDR "Could not init mlx_get_data_addr"
 
 #endif
