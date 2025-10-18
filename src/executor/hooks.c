@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 01:42:28 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/10/18 13:49:37 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/10/18 13:57:08 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static int	destroy_window(void *ptr)
 static int	handle_key(int keycode, void *ptr)
 {
 	(void)ptr;
-	printf("keycode:%d \n", keycode);
+	if (keycode == ESC)
+		exit(cleanup((t_game *)ptr));
 	// char	**in_map;
 	// void	*in_mlx;
 	// void	*in_win;
@@ -72,7 +73,7 @@ static int	handle_key(int keycode, void *ptr)
 	// 		put_window(in_mlx, in_win, ((*i) * 10), ((*j) * 10), 0x0000FF);
 	// 	}
 	// }
-	// return (0);
+	return (0);
 }
 
 
