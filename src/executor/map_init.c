@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:32:23 by akosaca           #+#    #+#             */
-/*   Updated: 2025/10/17 17:07:49 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/10/18 13:50:39 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,49 +43,49 @@ int	create_xpm(void *mlx, t_xpm *xpm, t_tex tex)
 	return (0);
 }
 
-void put_window(void *mlx, void *win, int x, int y, int color)
-{
-	int i;
-	int j;
+// void put_window(void *mlx, void *win, int x, int y, int color)
+// {
+// 	int i;
+// 	int j;
 
-	i = 0;
-	while (i < 10)
-	{
-		j = 0;
-		while (j < 10)
-		{
-			mlx_pixel_put(mlx, win, x + j, y + i, color);
-			j++;
-		}
-		i++;
-	}
-}
+// 	i = 0;
+// 	while (i < 10)
+// 	{
+// 		j = 0;
+// 		while (j < 10)
+// 		{
+// 			mlx_pixel_put(mlx, win, x + j, y + i, color);
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// }
 
-int	read_map(void *mlx, void *win, t_map map)
-{
-	(void)map;
-	(void)win;
-	(void)mlx;
+// int	read_map(void *mlx, void *win, t_map map)
+// {
+// 	(void)map;
+// 	(void)win;
+// 	(void)mlx;
 
-	int i = 0;
-	int j = 0;
-	while (i < map.h)
-	{
-		j= 0;
-		while (j < map.max_w)
-		{
-			if (map.map[i][j] == '1')
-				put_window(mlx, win, j * 10, i * 10, 0xFFFF00);
-			else if (map.map[i][j] == '0')
-				put_window(mlx, win, j * 10, i * 10, 0x000000);
-			else if (map.map[i][j] == 'N')
-				put_window(mlx, win, j * 10, i * 10, 0x0000FF);
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
+// 	int i = 0;
+// 	int j = 0;
+// 	while (i < map.h)
+// 	{
+// 		j= 0;
+// 		while (j < map.max_w)
+// 		{
+// 			if (map.map[i][j] == '1')
+// 				put_window(mlx, win, j * 10, i * 10, 0xFFFF00);
+// 			else if (map.map[i][j] == '0')
+// 				put_window(mlx, win, j * 10, i * 10, 0x000000);
+// 			else if (map.map[i][j] == 'N')
+// 				put_window(mlx, win, j * 10, i * 10, 0x0000FF);
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// 	return (0);
+// }
 #include <stdio.h>
 
 int	init_img_data(t_img *img_data, void *mlx)
@@ -96,7 +96,7 @@ int	init_img_data(t_img *img_data, void *mlx)
 
 	img_data->addr = mlx_get_data_addr(
 		img_data->img,
-		&img_data->bpp, 
+		&img_data->bpp,
 		&img_data->line_length,
 		&img_data->endian);
 	if (!img_data->addr)

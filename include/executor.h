@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 15:34:46 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/10/17 17:07:05 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/10/18 13:52:50 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,9 @@ int		init_img_data(t_img *img_data, void *mlx);
 
 void	init_hooks(t_game *game, void *mlx);
 void	destroy_exec(t_exec *exec);
+
+//void	render_frame(t_exec *exec, t_pars *pars);
+
 
 
 void put_window(void *mlx, void *win, int x, int y, int color);
