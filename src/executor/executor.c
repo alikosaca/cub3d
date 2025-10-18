@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 12:15:35 by akosaca           #+#    #+#             */
-/*   Updated: 2025/10/18 13:51:23 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/10/18 15:59:58 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	executor(t_game *game, t_exec *exec, t_pars *pars)
 {
 	if (init_game(exec, pars))
 		return (1);
+	draw_static_background(&exec->img);
+	mlx_put_image_to_window(exec->mlx.mlx, exec->mlx.win, exec->img.img, 0, 0);
 	init_hooks(game, exec->mlx.win);
 	mlx_loop(exec->mlx.mlx);
 	return (0);
