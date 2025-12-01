@@ -82,6 +82,7 @@ int	parser(t_pars *pars, char *file)
 {
 	char	**grid;
 
+    grid = NULL;
 	if (read_file(&grid, file))
 		return (__free((void ***)&grid), 1);
 	if (check_file(grid))
