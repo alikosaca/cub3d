@@ -33,15 +33,15 @@ int	get_file_height(int *height, char *file, int fd)
 	return ((*height));
 }
 
-static void	strip_newline(char **line)
+static void	strip_newline(char *line)
 {
 	int	i;
 
 	i = 0;
-	while ((*line)[i])
+	while (line[i])
 	{
-		if ((*line)[i] == '\n')
-			(*line)[i] = '\0';
+		if (line[i] == '\n')
+			line[i] = '\0';
 		i++;
 	}
 }
@@ -60,7 +60,7 @@ int	fill_grid(char *grid[], char *file, int fd)
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		strip_newline(&line);
+		strip_newline(line);
 		grid[i] = ft_strdup(line);
 		if (!grid[i])
 			return (_free((void **)&line), close(fd), 1);
