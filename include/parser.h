@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef PARSER_H
+# define PARSER_H
 
 # include <stdbool.h>
 # include <fcntl.h>
@@ -86,5 +87,4 @@ void	mark(char *c);
 
 void	destroy_pars(t_pars *pars);
 
-# define PARSER_H
 #endif
