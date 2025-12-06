@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rgb_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yaycicek <yaycicek@student.42istanbul.com. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 15:00:05 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/24 12:44:02 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/12/06 11:19:38 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ static int	check_rgb_values(char **rgb_values)
 		{
 			if (!ft_isdigit(rgb_values[i][j]))
 				return (print(ERR_RGB_NOT_NUM));
+			else if (ft_strlen(rgb_values[i]) >= 4)
+				return (print(ERR_RGB_INT_OVERFLOW));
 			j++;
 		}
 		if (ft_atoi(rgb_values[i]) < 0 || ft_atoi(rgb_values[i]) > 255)

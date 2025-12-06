@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yaycicek <yaycicek@student.42istanbul.com. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 18:43:24 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/10/17 17:03:17 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/12/06 11:17:49 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define ERR_RGB_OVERFLOW "RGB color cannot have more than 3 values"
 # define ERR_TRAIL_COMMA_RGB "RGB color definition cannot end with a ','"
 # define ERR_RGB_NOT_NUM "RGB value(s) must be a positive integer without sign"
+# define ERR_RGB_INT_OVERFLOW "RGB value must not exceed 3 digits"
 # define ERR_RGB_OUT_OF_RANGE "RGB color value(s) must be between 0 and 255"
 # define ERR_DUP_RGB "Map file has duplicate RGB color definition"
 # define ERR_PREMATURE_MAP "Map section cannot start before all values are set"
