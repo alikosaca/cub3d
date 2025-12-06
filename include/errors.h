@@ -6,7 +6,7 @@
 /*   By: yaycicek <yaycicek@student.42istanbul.com. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 18:43:24 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/12/06 11:17:49 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/12/06 12:08:20 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # define ERR_MISS_RGB "Map file has missing RGB color definition"
 # define ERR_MULTI_RGB "Map file has multiple RGB color definitions"
 # define ERR_RGB_OVERFLOW "RGB color cannot have more than 3 values"
+# define ERR_RGB_START_WITH_COMMA "RGB value cannot start with a ',' character"
+# define ERR_INVALID_RGB_FORMAT "RGB definition has an invalid format"
 # define ERR_TRAIL_COMMA_RGB "RGB color definition cannot end with a ','"
 # define ERR_RGB_NOT_NUM "RGB value(s) must be a positive integer without sign"
 # define ERR_RGB_INT_OVERFLOW "RGB value must not exceed 3 digits"

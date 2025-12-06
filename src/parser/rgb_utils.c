@@ -6,11 +6,29 @@
 /*   By: yaycicek <yaycicek@student.42istanbul.com. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 15:00:05 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/12/06 11:19:38 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/12/06 12:20:27 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
+
+static int	validate_rgb_commas(char *definition)
+{
+	char	*comma;
+
+	if (definition[0] == ',')
+		return (print(ERR_RGB_START_WITH_COMMA));
+	else if (definition[ft_strlen(definition) - 1] == ',')
+		return (print(ERR_TRAIL_COMMA_RGB));
+	comma = ft_strchr(definition, ',');
+	while (comma)
+	{
+		if (comma[-1] == ',' || comma[1] == ',')
+			return (print(ERR_INVALID_RGB_FORMAT));
+		comma = ft_strchr(comma + 1, ',');
+	}
+	return (0);
+}
 
 void	init_rgb_values(t_rgb *fl, t_rgb *cl, bool *initialized)
 {
@@ -78,11 +96,11 @@ int	set_rgb_values(t_pars *pars, char **lines, int *out, int *count)
 {
 	char	**rgb_values;
 
+	if (validate_rgb_commas(lines[1]))
+		return (1);
 	rgb_values = ft_split(lines[1], ',');
 	if (!rgb_values)
 		return (1);
-	if (lines[1][ft_strlen(lines[1]) - 1] == ',')
-		return (__free((void ***)&rgb_values), print(ERR_TRAIL_COMMA_RGB));
 	if (rgb_values[3])
 		return (__free((void ***)&rgb_values), print(ERR_RGB_OVERFLOW));
 	if (check_rgb_values(rgb_values))
