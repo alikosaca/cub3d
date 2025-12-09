@@ -80,4 +80,4 @@ term:
 	--track-fds=yes \
 	./cub3D $(ARG)
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re norm term
