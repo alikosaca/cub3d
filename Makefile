@@ -14,6 +14,7 @@ MLX_DIR   = $(LIB_DIR)/minilibx-linux
 SRC_DIR   = src
 PRS_DIR   = parser
 EXC_DIR   = executor
+RAY_DIR   = raycasting
 UTL_DIR   = utils
 BUILD_DIR = build
 BIN_DIR   = bin
@@ -44,11 +45,12 @@ EXC       = $(SRC_DIR)/$(EXC_DIR)/executor.c \
             $(SRC_DIR)/$(EXC_DIR)/map_init.c \
             $(SRC_DIR)/$(EXC_DIR)/hooks.c \
             $(SRC_DIR)/$(EXC_DIR)/destroy.c
+RAY       = $(SRC_DIR)/$(RAY_DIR)/raycasting.c
 UTL       = $(SRC_DIR)/$(UTL_DIR)/print.c \
             $(SRC_DIR)/$(UTL_DIR)/alloc.c \
             $(SRC_DIR)/$(UTL_DIR)/free.c
 
-ALL       = $(SRC) $(PRS) $(EXC) $(UTL)
+ALL       = $(SRC) $(PRS) $(EXC) $(RAY) $(UTL)
 OBJ       = $(ALL:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 
 all: $(LIBFT) $(MLX) $(TARGET)
