@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 15:34:46 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/12/21 11:06:08 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/12/23 21:38:51 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,8 @@ void	destroy_exec(t_exec *exec);
 void	draw_static_background(t_img *img);
 
 int		ray_loop(t_exec *exec);
+
+int init_ply(t_ply *ply, t_map *map);
 
 //void put_window(void *mlx, void *win, int x, int y, int color);
 #endif
