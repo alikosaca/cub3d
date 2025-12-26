@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 21:46:12 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/09/27 00:45:42 by yaycicek         ###   ########.fr       */
+/*   Updated: 2025/12/26 18:09:49 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executor.h"
 
-static void	destroy_xpm(void *mlx, t_xpm *xpm)
+static void	destroy_xpm(void *mlx, t_xpm *xpm, void *img)
 {
 	if (xpm->no)
 		mlx_destroy_image(mlx, xpm->no);
@@ -22,6 +22,8 @@ static void	destroy_xpm(void *mlx, t_xpm *xpm)
 		mlx_destroy_image(mlx, xpm->we);
 	if (xpm->ea)
 		mlx_destroy_image(mlx, xpm->ea);
+	if (img)
+		mlx_destroy_image(mlx, img);
 }
 
 static void	destroy_mlx(t_mlx *mlx)
@@ -37,6 +39,6 @@ static void	destroy_mlx(t_mlx *mlx)
 
 void	destroy_exec(t_exec *exec)
 {
-	destroy_xpm(exec->mlx.mlx, &exec->xpm);
+	destroy_xpm(exec->mlx.mlx, &exec->xpm, exec->img.img);
 	destroy_mlx(&exec->mlx);
 }
