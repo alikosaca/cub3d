@@ -6,12 +6,33 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 15:56:33 by akosaca           #+#    #+#             */
-/*   Updated: 2025/12/23 23:55:01 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/12/26 19:23:05 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <stdio.h>
+
+static void	hit_dda(t_ray *ray, t_map *map)
+{
+	while (ray->hit == 0)
+	{
+		if (ray->side_dist_x < ray->side_dist_y)
+		{
+			ray->side = 0;
+			ray->map_x += ray->step_x;
+			ray->side_dist_x += ray->delta_dist_x;
+		}
+		else
+		{
+			ray->side = 1;
+			ray->map_y += ray->step_y;
+			ray->side_dist_y += ray->delta_dist_x;
+		}
+		if (map->map[ray->map_y][ray->map_x] == '1')
+			ray->hit = 1;
+	}
+}
 
 static void	init_step_and_side_dist(t_ray *ray, t_ply *ply)
 {
@@ -56,14 +77,15 @@ static void	init_ray(t_ray *ray, t_ply *ply, int x)
 	
 }
 
-int	ray_loop(t_exec *exec)
+int	ray_loop(t_ray *ray, t_ply *ply, t_map *map)
 {
 	int	x;
 
 	x = 0;
 	while (x < SCREEN_WIDTH)
 	{
-		init_ray(&exec->ray, &exec->ply, x);
+		init_ray(ray, ply, x);
+		hit_dda(ray, map);
 		x++;
 	}
 	return (0);
