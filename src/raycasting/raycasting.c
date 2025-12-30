@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 15:56:33 by akosaca           #+#    #+#             */
-/*   Updated: 2025/12/30 20:30:15 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/12/30 20:31:38 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,39 @@ static void	hit_dda(t_ray *ray, t_map *map)
 		}
 		if (map->map[ray->map_y][ray->map_x] == '1')
 			ray->hit = true;
+	}
+}
+
+static void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
+{
+	char	*dst;
+
+	if (x < 0 || x >= SCREEN_WIDTH || y < 0 || y >= SCREEN_HEIGHT)
+		return ;
+	dst = img->addr + (y * img->line_length + x * (img->bpp / 8));
+	*(unsigned int*)dst = color;
+}
+
+static void	render_column(t_ray *ray, t_img *img, int x)
+{
+	int		y;
+	int		color;
+
+	y = -1;
+	while (++y < SCREEN_HEIGHT)
+	{
+		if (y < ray->draw_start)
+			color = 0x2b1b0e;
+		else if (y <= ray->draw_end)
+		{
+			if (ray->side == NS)
+				color = 0x703eb0;
+			else if (ray->side == EW)
+				color = 0xcf5f84;			
+		}
+		else
+			color = 0x666666;
+		my_mlx_pixel_put(img, x, y, color);
 	}
 }
 
