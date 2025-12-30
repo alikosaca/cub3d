@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 15:34:46 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/12/23 21:38:51 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/12/30 19:11:30 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 # include "parser.h"
 
 # define PROJECT_NAME "cub3D"
-// # define SCREEN_WIDTH 3840
-// # define SCREEN_HEIGHT 2160
-// # define SCREEN_WIDTH 1920
-// # define SCREEN_HEIGHT 1000
-# define SCREEN_WIDTH 190
-# define SCREEN_HEIGHT 100
+//# define SCREEN_WIDTH 3840
+//# define SCREEN_HEIGHT 2160
+# define SCREEN_WIDTH 1920
+# define SCREEN_HEIGHT 1000
+//# define SCREEN_WIDTH 190
+//# define SCREEN_HEIGHT 100
 
 # define ESC 65307
 # define A 97
@@ -33,6 +33,10 @@
 # define LOK 65361
 # define ROK 65363
 
+#define NS 0
+#define EW 1
+#define false 0
+#define true 1
 typedef struct s_game	t_game;
 
 typedef struct s_mlx
@@ -112,9 +116,9 @@ int		init_img_data(t_img *img_data, void *mlx);
 void	init_hooks(t_game *game, void *mlx);
 void	destroy_exec(t_exec *exec);
 
-void	draw_static_background(t_img *img);
+//void	draw_static_background(t_img *img);
 
-int		ray_loop(t_exec *exec);
+int		ray_loop(t_ray *ray, t_ply *ply, t_map *map, t_img *img);
 
 int init_ply(t_ply *ply, t_map *map);
 
