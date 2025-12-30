@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 15:56:33 by akosaca           #+#    #+#             */
-/*   Updated: 2025/12/26 19:23:05 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/12/30 19:30:07 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,22 @@
 
 static void	hit_dda(t_ray *ray, t_map *map)
 {
-	while (ray->hit == 0)
+	while (ray->hit == false)
 	{
 		if (ray->side_dist_x < ray->side_dist_y)
 		{
-			ray->side = 0;
+			ray->side = NS;
 			ray->map_x += ray->step_x;
 			ray->side_dist_x += ray->delta_dist_x;
 		}
 		else
 		{
-			ray->side = 1;
+			ray->side = EW;
 			ray->map_y += ray->step_y;
 			ray->side_dist_y += ray->delta_dist_x;
 		}
 		if (map->map[ray->map_y][ray->map_x] == '1')
-			ray->hit = 1;
+			ray->hit = true;
 	}
 }
 
@@ -61,7 +61,7 @@ static void	init_ray(t_ray *ray, t_ply *ply, int x)
 {
 	ray->map_x = (int)ply->pos_x;
 	ray->map_y = (int)ply->pos_y;
-	ray->hit = 0;
+	ray->hit = false;
 	ray->camera_x = 2 * x / (double)SCREEN_WIDTH - 1;
 	ray->ray_dir_x = ply->dir_x + ply->plane_x * ray->camera_x;
 	ray->ray_dir_y = ply->dir_y + ply->plane_y * ray->camera_x;
@@ -74,11 +74,29 @@ static void	init_ray(t_ray *ray, t_ply *ply, int x)
 	else
 		ray->delta_dist_y = fabs(1 / ray->ray_dir_y);
 	init_step_and_side_dist(ray, ply);
-	
 }
 
-int	ray_loop(t_ray *ray, t_ply *ply, t_map *map)
+static void	wall_height(t_ray *ray, t_ply *ply)
 {
+	if (ray->side == NS)
+		ray->perp_wall_dist = (ray->map_x - ply->pos_x + (1 - ray->step_x) / 2) / ray->ray_dir_x;
+	else if (ray->side == EW)
+		ray->perp_wall_dist = (ray->map_y - ply->pos_y + (1 - ray->step_y) / 2) / ray->ray_dir_y;
+	if (ray->perp_wall_dist < 0.001)
+		ray->line_height = SCREEN_HEIGHT;
+	else
+		ray->line_height = (int)(SCREEN_HEIGHT / ray->perp_wall_dist);
+	ray->draw_start = -ray->line_height / 2 + SCREEN_HEIGHT / 2;
+	if (ray->draw_start < 0)
+		ray->draw_start = 0;
+	ray->draw_end = ray->line_height / 2 + SCREEN_HEIGHT / 2;
+	if (ray->draw_end >= SCREEN_HEIGHT)
+		ray->draw_end = SCREEN_HEIGHT - 1;
+}
+
+int	ray_loop(t_ray *ray, t_ply *ply, t_map *map, t_img *img)
+{
+	(void)img;
 	int	x;
 
 	x = 0;
@@ -86,7 +104,9 @@ int	ray_loop(t_ray *ray, t_ply *ply, t_map *map)
 	{
 		init_ray(ray, ply, x);
 		hit_dda(ray, map);
+		wall_height(ray, ply);
 		x++;
 	}
+	
 	return (0);
 }
