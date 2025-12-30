@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 15:56:33 by akosaca           #+#    #+#             */
-/*   Updated: 2025/12/30 19:30:07 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/12/30 20:30:15 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ static void	hit_dda(t_ray *ray, t_map *map)
 	{
 		if (ray->side_dist_x < ray->side_dist_y)
 		{
-			ray->side = NS;
+			ray->side = EW;
 			ray->map_x += ray->step_x;
 			ray->side_dist_x += ray->delta_dist_x;
 		}
 		else
 		{
-			ray->side = EW;
+			ray->side = NS;
 			ray->map_y += ray->step_y;
-			ray->side_dist_y += ray->delta_dist_x;
+			ray->side_dist_y += ray->delta_dist_y;
 		}
 		if (map->map[ray->map_y][ray->map_x] == '1')
 			ray->hit = true;
@@ -78,9 +78,9 @@ static void	init_ray(t_ray *ray, t_ply *ply, int x)
 
 static void	wall_height(t_ray *ray, t_ply *ply)
 {
-	if (ray->side == NS)
+	if (ray->side == EW)
 		ray->perp_wall_dist = (ray->map_x - ply->pos_x + (1 - ray->step_x) / 2) / ray->ray_dir_x;
-	else if (ray->side == EW)
+	else if (ray->side == NS)
 		ray->perp_wall_dist = (ray->map_y - ply->pos_y + (1 - ray->step_y) / 2) / ray->ray_dir_y;
 	if (ray->perp_wall_dist < 0.001)
 		ray->line_height = SCREEN_HEIGHT;
@@ -105,6 +105,7 @@ int	ray_loop(t_ray *ray, t_ply *ply, t_map *map, t_img *img)
 		init_ray(ray, ply, x);
 		hit_dda(ray, map);
 		wall_height(ray, ply);
+		render_column(ray, img, x);
 		x++;
 	}
 	
