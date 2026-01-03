@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 15:34:46 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/12/30 19:11:30 by akosaca          ###   ########.fr       */
+/*   Updated: 2026/01/03 18:29:55 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@
 # define SCREEN_HEIGHT 1000
 //# define SCREEN_WIDTH 190
 //# define SCREEN_HEIGHT 100
+
+
+
+# define MOVE_SPEED 0.10
 
 # define ESC 65307
 # define A 97
