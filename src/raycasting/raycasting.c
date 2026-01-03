@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 15:56:33 by akosaca           #+#    #+#             */
-/*   Updated: 2025/12/30 20:31:38 by akosaca          ###   ########.fr       */
+/*   Updated: 2026/01/03 19:02:54 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,15 @@ static void	hit_dda(t_ray *ray, t_map *map)
 	}
 }
 
-static void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
-{
-	char	*dst;
+// static void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
+// {
+// 	char	*dst;
 
-	if (x < 0 || x >= SCREEN_WIDTH || y < 0 || y >= SCREEN_HEIGHT)
-		return ;
-	dst = img->addr + (y * img->line_length + x * (img->bpp / 8));
-	*(unsigned int*)dst = color;
-}
+// 	if (x < 0 || x >= SCREEN_WIDTH || y < 0 || y >= SCREEN_HEIGHT)
+// 		return ;
+// 	dst = img->addr + (y * img->line_length + x * (img->bpp / 8));
+// 	*(unsigned int*)dst = color;
+// }
 
 static void	render_column(t_ray *ray, t_img *img, int x)
 {
