@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 15:34:46 by yaycicek          #+#    #+#             */
-/*   Updated: 2026/01/03 18:29:55 by akosaca          ###   ########.fr       */
+/*   Updated: 2026/01/03 19:32:48 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@
 
 
 
-# define MOVE_SPEED 0.10
+# define MOVE_SPEED 0.05
+# define ROT_SPEED 0.03
+
 
 # define ESC 65307
 # define A 97
@@ -125,6 +127,9 @@ void	destroy_exec(t_exec *exec);
 int		ray_loop(t_ray *ray, t_ply *ply, t_map *map, t_img *img);
 
 int init_ply(t_ply *ply, t_map *map);
+
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
+
 
 //void put_window(void *mlx, void *win, int x, int y, int color);
 #endif
