@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 15:34:46 by yaycicek          #+#    #+#             */
-/*   Updated: 2026/01/03 19:32:48 by akosaca          ###   ########.fr       */
+/*   Updated: 2026/01/04 16:40:53 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,6 @@ typedef struct s_mlx
 	void	*win;
 }	t_mlx;
 
-typedef struct s_xpm
-{
-	void	*no;
-	void	*so;
-	void	*we;
-	void	*ea;
-}	t_xpm;
-
 typedef struct s_img
 {
 	void	*img;
@@ -69,6 +61,14 @@ typedef struct s_img
 	int		width;
 	int		height;
 }	t_img;
+
+typedef struct s_xpm
+{
+	t_img	no;
+	t_img	so;
+	t_img	we;
+	t_img	ea;
+}	t_xpm;
 
 typedef struct s_ray
 {
@@ -124,7 +124,7 @@ void	destroy_exec(t_exec *exec);
 
 //void	draw_static_background(t_img *img);
 
-int		ray_loop(t_ray *ray, t_ply *ply, t_map *map, t_img *img);
+int	ray_loop(t_ray *ray, t_ply *ply, t_map *map, t_img *img);
 
 int init_ply(t_ply *ply, t_map *map);
 
