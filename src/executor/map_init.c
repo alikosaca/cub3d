@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:32:23 by akosaca           #+#    #+#             */
-/*   Updated: 2025/12/23 22:12:35 by akosaca          ###   ########.fr       */
+/*   Updated: 2026/01/04 17:31:24 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,76 +29,38 @@ int	create_win(void *mlx, void **win)
 	return (0);
 }
 
-int	create_xpm(void *mlx, t_xpm *xpm, t_tex tex)
+static int	load_texture(void *mlx, t_img *tex_img, char *path)
 {
-	int	width;
-	int	height;
-
-	xpm->no = mlx_xpm_file_to_image(mlx, tex.no, &width, &height);
-	xpm->so = mlx_xpm_file_to_image(mlx, tex.so, &width, &height);
-	xpm->we = mlx_xpm_file_to_image(mlx, tex.we, &width, &height);
-	xpm->ea = mlx_xpm_file_to_image(mlx, tex.ea, &width, &height);
-	if (!xpm->ea || !xpm->no || !xpm->so || !xpm->we)
-		return (print(ERR_CREATE_XPM));
+	tex_img->img = mlx_xpm_file_to_image(mlx, path, &tex_img->width, &tex_img->height);
+	if (!tex_img->img)
+		return (1);
+	tex_img->addr = mlx_get_data_addr(tex_img->img, &tex_img->bpp,
+			&tex_img->line_length, &tex_img->endian);
+	if (!tex_img->addr)
+		return (1);
 	return (0);
 }
 
-// void put_window(void *mlx, void *win, int x, int y, int color)
-// {
-// 	int i;
-// 	int j;
-
-// 	i = 0;
-// 	while (i < 10)
-// 	{
-// 		j = 0;
-// 		while (j < 10)
-// 		{
-// 			mlx_pixel_put(mlx, win, x + j, y + i, color);
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// }
-
-// int	read_map(void *mlx, void *win, t_map map)
-// {
-// 	(void)map;
-// 	(void)win;
-// 	(void)mlx;
-
-// 	int i = 0;
-// 	int j = 0;
-// 	while (i < map.h)
-// 	{
-// 		j= 0;
-// 		while (j < map.max_w)
-// 		{
-// 			if (map.map[i][j] == '1')
-// 				put_window(mlx, win, j * 10, i * 10, 0xFFFF00);
-// 			else if (map.map[i][j] == '0')
-// 				put_window(mlx, win, j * 10, i * 10, 0x000000);
-// 			else if (map.map[i][j] == 'N')
-// 				put_window(mlx, win, j * 10, i * 10, 0x0000FF);
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// 	return (0);
-// }
-#include <stdio.h>
+int	create_xpm(void *mlx, t_xpm *xpm, t_tex tex)
+{
+	if (load_texture(mlx, &xpm->no, tex.no)
+		|| load_texture(mlx, &xpm->so, tex.so)
+		|| load_texture(mlx, &xpm->we, tex.we)
+		|| load_texture(mlx, &xpm->ea, tex.ea))
+		return (print(ERR_CREATE_XPM));
+	return (0);
+}
 
 int	init_img_data(t_img *img_data, void *mlx)
 {
 	img_data->img = mlx_new_image(mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	if (!img_data->img)
 		return (print(ERR_CREATE_IMG));
-
 	img_data->addr = mlx_get_data_addr(
-		img_data->img,
-		&img_data->bpp,
-		&img_data->line_length,
-		&img_data->endian);
+			img_data->img,
+			&img_data->bpp,
+			&img_data->line_length,
+			&img_data->endian);
 	if (!img_data->addr)
 		return (print(ERR_INIT_ADDR));
 	return (0);
@@ -129,7 +91,7 @@ static void	init_ply_dir(t_ply *ply, char pos, int i, int j)
 	}
 }
 
-int init_ply(t_ply *ply, t_map *map)
+int	init_ply(t_ply *ply, t_map *map)
 {
 	int	i;
 	int	j;

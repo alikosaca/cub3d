@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 01:42:28 by yaycicek          #+#    #+#             */
-/*   Updated: 2026/01/03 19:38:34 by akosaca          ###   ########.fr       */
+/*   Updated: 2026/01/04 17:16:42 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static int	handle_key(int keycode, void *ptr)
 		move_ply(keycode, ply, &game->pars.map);
 	if (keycode == LOK || keycode == ROK)
 		rotate_ply(keycode, ply);
-	ray_loop(&game->exec.ray, ply, &game->pars.map, &game->exec.img);
+	ray_loop(&game->exec.ray, ply, &game->pars.map, &game->exec.img, &game->exec.xpm);
 	mlx_put_image_to_window(game->exec.mlx.mlx, game->exec.mlx.win, game->exec.img.img, 0, 0);
 	return (0);
 }

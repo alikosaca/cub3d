@@ -37,7 +37,7 @@ int	executor(t_game *game, t_exec *exec, t_pars *pars)
 		return (1);
 	//draw_static_background(&exec->img);
 	mlx_put_image_to_window(exec->mlx.mlx, exec->mlx.win, exec->img.img, 0, 0);
-	if (ray_loop(&exec->ray, &exec->ply, &pars->map, &exec->img))
+	if (ray_loop(&exec->ray, &exec->ply, &pars->map, &exec->img, &exec->xpm))
 		return (1);
 	init_hooks(game, exec->mlx.win);
 	mlx_put_image_to_window(exec->mlx.mlx, exec->mlx.win, exec->img.img, 0, 0);
