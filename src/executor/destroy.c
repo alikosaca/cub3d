@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 21:46:12 by yaycicek          #+#    #+#             */
-/*   Updated: 2025/12/26 18:09:49 by akosaca          ###   ########.fr       */
+/*   Updated: 2026/01/04 16:32:26 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 static void	destroy_xpm(void *mlx, t_xpm *xpm, void *img)
 {
-	if (xpm->no)
-		mlx_destroy_image(mlx, xpm->no);
-	if (xpm->so)
-		mlx_destroy_image(mlx, xpm->so);
-	if (xpm->we)
-		mlx_destroy_image(mlx, xpm->we);
-	if (xpm->ea)
-		mlx_destroy_image(mlx, xpm->ea);
+	if (xpm->no.img)
+		mlx_destroy_image(mlx, xpm->no.img);
+	if (xpm->so.img)
+		mlx_destroy_image(mlx, xpm->so.img);
+	if (xpm->we.img)
+		mlx_destroy_image(mlx, xpm->we.img);
+	if (xpm->ea.img)
+		mlx_destroy_image(mlx, xpm->ea.img);
 	if (img)
 		mlx_destroy_image(mlx, img);
 }
