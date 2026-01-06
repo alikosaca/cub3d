@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 12:15:35 by akosaca           #+#    #+#             */
-/*   Updated: 2026/01/03 19:03:25 by akosaca          ###   ########.fr       */
+/*   Updated: 2026/01/06 20:08:24 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 static int	init_game(t_exec *exec, t_pars *pars)
 {
+	ft_memset(&exec->key, 0, sizeof(t_keys));
 	if (init_mlx(&exec->mlx.mlx))
 		return (1);
 	if (create_xpm(exec->mlx.mlx, &exec->xpm, pars->tex))
