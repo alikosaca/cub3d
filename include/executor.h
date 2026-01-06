@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 15:34:46 by yaycicek          #+#    #+#             */
-/*   Updated: 2026/01/06 20:22:07 by akosaca          ###   ########.fr       */
+/*   Updated: 2026/01/06 20:32:35 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ typedef struct s_keys
 {
 	int	w;
 	int	s;
+	int	a;
+	int	d;
 	int	left;
 	int	right;	
 }	t_keys;

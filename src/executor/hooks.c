@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 01:42:28 by yaycicek          #+#    #+#             */
-/*   Updated: 2026/01/06 20:27:24 by akosaca          ###   ########.fr       */
+/*   Updated: 2026/01/06 20:50:43 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ static int	keypress(int keycode, void *ptr)
 		key->w = 1;
 	else if (keycode == S)
 		key->s = 1;
+	else if (keycode == A)
+		key->a = 1;
+	else if (keycode == D)
+		key->d = 1;
 	else if (keycode == LOK)
 		key->left = 1;
 	else if (keycode == ROK)
@@ -50,13 +54,19 @@ static int	keypress(int keycode, void *ptr)
 
 static int	keyrelease(int keycode, void *ptr)
 {
+	t_game	*game;
 	t_keys	*key;
 
-	key = (t_keys *)ptr;
+	game = (t_game *)ptr;
+	key = &game->exec.key;
 	if (keycode == W)
 		key->w = 0;
 	else if (keycode == S)
 		key->s = 0;
+	else if (keycode == A)
+		key->a = 0;
+	else if (keycode == D)
+		key->d = 0;
 	else if (keycode == LOK)
 		key->left = 0;
 	else if (keycode == ROK)
@@ -64,7 +74,15 @@ static int	keyrelease(int keycode, void *ptr)
 	return (0);
 }
 
-static void	move_ply(t_ply *ply, t_map *map, int dir)
+static void	move_ad(t_ply *ply, t_map *map, int dir)
+{
+	if (map->map[(int)ply->pos_y][(int)(ply->pos_x + ply->plane_x * MOVE_SPEED * dir)] != '1')
+		ply->pos_x += ply->plane_x * MOVE_SPEED * dir;
+	if (map->map[(int)(ply->pos_y + ply->plane_y * MOVE_SPEED * dir)][(int)ply->pos_x] != '1')
+		ply->pos_y += ply->plane_y * MOVE_SPEED * dir;
+}
+
+static void	move_ws(t_ply *ply, t_map *map, int dir)
 {
 	if (map->map[(int)ply->pos_y][(int)(ply->pos_x + ply->dir_x * MOVE_SPEED * dir)] != '1')
 		ply->pos_x += ply->dir_x * MOVE_SPEED * dir;
@@ -95,12 +113,16 @@ static int	game_loop(void *ptr)
 	game = (t_game *)ptr;
 	key = &game->exec.key;
 	moved = 0;
-	if (key->w || key->s || key->left || key->right)
+	if (key->w || key->s || key->a || key->d || key->left || key->right)
 		moved = 1;
 	if (key->w)
-		move_ply(&game->exec.ply, &game->pars.map, 1);
+		move_ws(&game->exec.ply, &game->pars.map, 1);
 	if (key->s)
-		move_ply(&game->exec.ply, &game->pars.map, -1);
+		move_ws(&game->exec.ply, &game->pars.map, -1);
+	if (key->a)
+		move_ad(&game->exec.ply, &game->pars.map, -1);
+	if (key->d)
+		move_ad(&game->exec.ply, &game->pars.map, 1);
 	if (key->right)
 		rotate_ply(&game->exec.ply, ROT_SPEED);
 	if (key->left)
@@ -120,6 +142,6 @@ void	init_hooks(t_game *game, void *win)
 {
 	mlx_hook(win, 17, 0, destroy_window, game);
 	mlx_hook(win, 2, 1L<<0, keypress, game);
-	mlx_hook(win, 3, 1L<<1, keyrelease, &game->exec.key);
+	mlx_hook(win, 3, 1L<<1, keyrelease, game);
 	mlx_loop_hook(game->exec.mlx.mlx, game_loop, game);
 }
