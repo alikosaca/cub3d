@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 15:34:46 by yaycicek          #+#    #+#             */
-/*   Updated: 2026/01/04 16:42:08 by akosaca          ###   ########.fr       */
+/*   Updated: 2026/01/06 20:22:07 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,14 @@ typedef struct s_mlx
 	void	*mlx;
 	void	*win;
 }	t_mlx;
+
+typedef struct s_keys
+{
+	int	w;
+	int	s;
+	int	left;
+	int	right;	
+}	t_keys;
 
 typedef struct s_img
 {
@@ -109,6 +117,7 @@ typedef struct s_exec
 	t_img	img;
 	t_ray	ray;
 	t_ply	ply;
+	t_keys	key;
 }	t_exec;
 
 int		executor(t_game *game, t_exec *exec, t_pars *pars);
