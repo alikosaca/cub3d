@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 01:42:28 by yaycicek          #+#    #+#             */
-/*   Updated: 2026/01/13 04:48:28 by akosaca          ###   ########.fr       */
+/*   Updated: 2026/01/13 07:08:48 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,18 +76,43 @@ static int	keyrelease(int keycode, void *ptr)
 
 static void	move_ad(t_ply *ply, t_map *map, int dir)
 {
-	if (map->map[(int)ply->pos_y][(int)(ply->pos_x + ply->plane_x * MOVE_SPEED * dir)] != '1')
-		ply->pos_x += ply->plane_x * MOVE_SPEED * dir;
-	if (map->map[(int)(ply->pos_y + ply->plane_y * MOVE_SPEED * dir)][(int)ply->pos_x] != '1')
-		ply->pos_y += ply->plane_y * MOVE_SPEED * dir;
+	double	step;
+	double	padding;
+	double	next_x;
+	double	next_y;
+
+	step = MOVE_SPEED * dir;
+	if (step > 0)
+		padding = 0.2;
+	else
+		padding = -0.2;
+
+	next_x = ply->pos_x + ply->plane_x * (step + padding);
+	next_y = ply->pos_y + ply->plane_y * (step + padding);
+	if (map->map[(int)ply->pos_y][(int)next_x] != '1')
+		ply->pos_x += ply->plane_x * step;
+	if (map->map[(int)next_y][(int)ply->pos_x] != '1')
+		ply->pos_y += ply->plane_y * step;
 }
 
 static void	move_ws(t_ply *ply, t_map *map, int dir)
 {
-	if (map->map[(int)ply->pos_y][(int)(ply->pos_x + ply->dir_x * MOVE_SPEED * dir)] != '1')
-		ply->pos_x += ply->dir_x * MOVE_SPEED * dir;
-	if (map->map[(int)(ply->pos_y + ply->dir_y * MOVE_SPEED * dir)][(int)ply->pos_x] != '1')
-		ply->pos_y += ply->dir_y * MOVE_SPEED * dir;
+	double	step;
+	double	padding;
+	double	next_x;
+	double	next_y;
+
+	step = MOVE_SPEED * dir;
+	if (step > 0)
+		padding = 0.2;
+	else
+		padding = -0.2;
+	next_x = ply->pos_x + ply->dir_x * (step + padding);
+	next_y = ply->pos_y + ply->dir_y * (step + padding);
+	if (map->map[(int)ply->pos_y][(int)next_x] != '1')
+		ply->pos_x += ply->dir_x * step;
+	if (map->map[(int)next_y][(int)ply->pos_x] != '1')
+		ply->pos_y += ply->dir_y * step;
 }
 
 static void	rotate_ply(t_ply *ply, double rot)
