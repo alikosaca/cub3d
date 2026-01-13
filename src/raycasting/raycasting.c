@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yaycicek <yaycicek@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 15:56:33 by akosaca           #+#    #+#             */
-/*   Updated: 2026/01/13 04:28:41 by akosaca          ###   ########.fr       */
+/*   Updated: 2026/01/13 14:40:18 by yaycicek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,16 @@ static void	wall_height(t_ray *ray, t_ply *ply)
 	ray->draw_start = -ray->line_height / 2 + SCREEN_HEIGHT / 2;
 	if (ray->draw_start < 0)
 		ray->draw_start = 0;
+	if (ray->line_height % 2 == 0)
+        ray->draw_end--;
 	ray->draw_end = ray->line_height / 2 + SCREEN_HEIGHT / 2;
 	if (ray->draw_end >= SCREEN_HEIGHT)
 		ray->draw_end = SCREEN_HEIGHT - 1;
+	if (ray->line_height % 2 == 0)
+        ray->draw_end--;
+
+    if (ray->draw_end >= SCREEN_HEIGHT)
+        ray->draw_end = SCREEN_HEIGHT - 1;
 }
 
 static void	hit_dda(t_ray *ray, t_map *map)
