@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 01:42:28 by yaycicek          #+#    #+#             */
-/*   Updated: 2026/01/06 20:50:43 by akosaca          ###   ########.fr       */
+/*   Updated: 2026/01/13 04:48:28 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,13 +108,11 @@ static int	game_loop(void *ptr)
 {
 	t_game	*game;
 	t_keys	*key;
-	int		moved;
 
 	game = (t_game *)ptr;
 	key = &game->exec.key;
-	moved = 0;
-	if (key->w || key->s || key->a || key->d || key->left || key->right)
-		moved = 1;
+	if (!(key->w || key->s || key->a || key->d || key->left || key->right))
+		return (0);
 	if (key->w)
 		move_ws(&game->exec.ply, &game->pars.map, 1);
 	if (key->s)
@@ -127,13 +125,10 @@ static int	game_loop(void *ptr)
 		rotate_ply(&game->exec.ply, ROT_SPEED);
 	if (key->left)
 		rotate_ply(&game->exec.ply, -ROT_SPEED);
-	if (moved)
-	{
-		ray_loop(&game->exec.ray, &game->exec.ply, &game->pars.map,
-			&game->exec.img, &game->exec.xpm);
-		mlx_put_image_to_window(game->exec.mlx.mlx, game->exec.mlx.win,
-			game->exec.img.img, 0, 0);		
-	}
+	ray_loop(&game->exec.ray, &game->exec.ply, &game->pars.map,
+		&game->exec.img, &game->exec.xpm);
+	mlx_put_image_to_window(game->exec.mlx.mlx, game->exec.mlx.win,
+		game->exec.img.img, 0, 0);
 	return (0);
 }
 
