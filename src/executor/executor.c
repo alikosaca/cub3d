@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 12:15:35 by akosaca           #+#    #+#             */
-/*   Updated: 2026/01/06 20:08:24 by akosaca          ###   ########.fr       */
+/*   Updated: 2026/01/13 05:02:28 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 
 static int	init_game(t_exec *exec, t_pars *pars)
 {
-	ft_memset(&exec->key, 0, sizeof(t_keys));
 	if (init_mlx(&exec->mlx.mlx))
 		return (1);
 	if (create_xpm(exec->mlx.mlx, &exec->xpm, pars->tex))
@@ -27,22 +26,19 @@ static int	init_game(t_exec *exec, t_pars *pars)
 		return (1);
 	if (init_ply(&exec->ply, &pars->map))
 		return (1);
-	// if (read_map(exec->mlx.mlx, exec->mlx.win, pars->map))
-	// 	return (1);
 	return (0);
 }
 
+#include <stdio.h>
 int	executor(t_game *game, t_exec *exec, t_pars *pars)
 {
 	if (init_game(exec, pars))
 		return (1);
-	//draw_static_background(&exec->img);
 	mlx_put_image_to_window(exec->mlx.mlx, exec->mlx.win, exec->img.img, 0, 0);
 	if (ray_loop(&exec->ray, &exec->ply, &pars->map, &exec->img, &exec->xpm))
 		return (1);
 	init_hooks(game, exec->mlx.win);
 	mlx_put_image_to_window(exec->mlx.mlx, exec->mlx.win, exec->img.img, 0, 0);
-	//mlx_hook(game->exec.mlx.win, 2, 1L<<0, handle_keypress, game);
 	mlx_loop(exec->mlx.mlx);
 	return (0);
 }
