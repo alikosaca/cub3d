@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 01:42:28 by yaycicek          #+#    #+#             */
-/*   Updated: 2026/01/13 07:08:48 by akosaca          ###   ########.fr       */
+/*   Updated: 2026/01/15 19:22:33 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,8 +150,7 @@ static int	game_loop(void *ptr)
 		rotate_ply(&game->exec.ply, ROT_SPEED);
 	if (key->left)
 		rotate_ply(&game->exec.ply, -ROT_SPEED);
-	ray_loop(&game->exec.ray, &game->exec.ply, &game->pars.map,
-		&game->exec.img, &game->exec.xpm);
+	ray_loop(&game->exec, &game->pars.map);
 	mlx_put_image_to_window(game->exec.mlx.mlx, game->exec.mlx.win,
 		game->exec.img.img, 0, 0);
 	return (0);

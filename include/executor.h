@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 15:34:46 by yaycicek          #+#    #+#             */
-/*   Updated: 2026/01/06 20:32:35 by akosaca          ###   ########.fr       */
+/*   Updated: 2026/01/15 19:09:38 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include "parser.h"
 
 # define PROJECT_NAME "cub3D"
-//# define SCREEN_WIDTH 3840
-//# define SCREEN_HEIGHT 2160
+// # define SCREEN_WIDTH 3840
+// # define SCREEN_HEIGHT 2160
 # define SCREEN_WIDTH 1920
 # define SCREEN_HEIGHT 1000
 //# define SCREEN_WIDTH 190
@@ -27,8 +27,8 @@
 
 
 
-# define MOVE_SPEED 0.05
-# define ROT_SPEED 0.03
+# define MOVE_SPEED 0.10
+# define ROT_SPEED 0.02
 
 
 # define ESC 65307
@@ -131,16 +131,24 @@ int		create_win(void *mlx, void **win);
 int		init_img_data(t_img *img_data, void *mlx);
 
 void	init_hooks(t_game *game, void *mlx);
-void	destroy_exec(t_exec *exec);
+
 
 //void	draw_static_background(t_img *img);
 
-int		ray_loop(t_ray *ray, t_ply *ply, t_map *map, t_img *img, t_xpm *xpm);
+//int		ray_loop(t_ray *ray, t_ply *ply, t_map *map, t_img *img, t_xpm *xpm);
+int		ray_loop(t_exec *exec, t_map *map);
 
 int init_ply(t_ply *ply, t_map *map);
 
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 
+//ray_utils
+void	init_step_and_side_dist(t_ray *ray, t_ply *ply);
+t_img	*select_tex(t_ray *ray, t_xpm *xpm);
+int		select_tex_x(t_ray *ray, t_ply *ply, t_img *tex);
+void	draw_map(t_ray *ray, t_img *img, t_img *tex, int x, int tex_x);
+
+void	destroy_exec(t_exec *exec);
 //void put_window(void *mlx, void *win, int x, int y, int color);
 #endif
