@@ -45,7 +45,8 @@ EXC       = $(SRC_DIR)/$(EXC_DIR)/executor.c \
             $(SRC_DIR)/$(EXC_DIR)/map_init.c \
             $(SRC_DIR)/$(EXC_DIR)/hooks.c \
             $(SRC_DIR)/$(EXC_DIR)/destroy.c
-RAY       = $(SRC_DIR)/$(RAY_DIR)/raycasting.c
+RAY       = $(SRC_DIR)/$(RAY_DIR)/raycasting.c \
+            $(SRC_DIR)/$(RAY_DIR)/raycasting_utils.c
 UTL       = $(SRC_DIR)/$(UTL_DIR)/print.c \
             $(SRC_DIR)/$(UTL_DIR)/alloc.c \
             $(SRC_DIR)/$(UTL_DIR)/free.c
