@@ -6,13 +6,12 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 12:15:35 by akosaca           #+#    #+#             */
-/*   Updated: 2026/01/15 19:21:30 by akosaca          ###   ########.fr       */
+/*   Updated: 2026/01/16 15:24:41 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "executor.h"
-#include <stdio.h>
 
 static int	init_game(t_exec *exec, t_pars *pars)
 {
@@ -29,16 +28,17 @@ static int	init_game(t_exec *exec, t_pars *pars)
 	return (0);
 }
 
-#include <stdio.h>
 int	executor(t_game *game, t_exec *exec, t_pars *pars)
 {
 	if (init_game(exec, pars))
 		return (1);
-	mlx_put_image_to_window(exec->mlx.mlx, exec->mlx.win, exec->img.img, 0, 0);
+	mlx_put_image_to_window(exec->mlx.mlx,
+		exec->mlx.win, exec->img.img, 0, 0);
 	if (ray_loop(exec, &pars->map))
 		return (1);
 	init_hooks(game, exec->mlx.win);
-	mlx_put_image_to_window(exec->mlx.mlx, exec->mlx.win, exec->img.img, 0, 0);
+	mlx_put_image_to_window(exec->mlx.mlx,
+		exec->mlx.win, exec->img.img, 0, 0);
 	mlx_loop(exec->mlx.mlx);
 	return (0);
 }
