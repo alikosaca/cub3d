@@ -6,26 +6,15 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 01:42:28 by yaycicek          #+#    #+#             */
-/*   Updated: 2026/01/15 19:22:33 by akosaca          ###   ########.fr       */
+/*   Updated: 2026/01/16 15:37:17 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include <stdio.h>
 
 static int	destroy_window(void *ptr)
 {
 	exit(cleanup((t_game *)ptr));
-}
-
-void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
-{
-	char	*dst;
-
-	if (x < 0 || x >= SCREEN_WIDTH || y < 0 || y >= SCREEN_HEIGHT)
-		return ;
-	dst = img->addr + (y * img->line_length + x * (img->bpp / 8));
-	*(unsigned int*)dst = color;
 }
 
 static int	keypress(int keycode, void *ptr)
@@ -74,61 +63,6 @@ static int	keyrelease(int keycode, void *ptr)
 	return (0);
 }
 
-static void	move_ad(t_ply *ply, t_map *map, int dir)
-{
-	double	step;
-	double	padding;
-	double	next_x;
-	double	next_y;
-
-	step = MOVE_SPEED * dir;
-	if (step > 0)
-		padding = 0.2;
-	else
-		padding = -0.2;
-
-	next_x = ply->pos_x + ply->plane_x * (step + padding);
-	next_y = ply->pos_y + ply->plane_y * (step + padding);
-	if (map->map[(int)ply->pos_y][(int)next_x] != '1')
-		ply->pos_x += ply->plane_x * step;
-	if (map->map[(int)next_y][(int)ply->pos_x] != '1')
-		ply->pos_y += ply->plane_y * step;
-}
-
-static void	move_ws(t_ply *ply, t_map *map, int dir)
-{
-	double	step;
-	double	padding;
-	double	next_x;
-	double	next_y;
-
-	step = MOVE_SPEED * dir;
-	if (step > 0)
-		padding = 0.2;
-	else
-		padding = -0.2;
-	next_x = ply->pos_x + ply->dir_x * (step + padding);
-	next_y = ply->pos_y + ply->dir_y * (step + padding);
-	if (map->map[(int)ply->pos_y][(int)next_x] != '1')
-		ply->pos_x += ply->dir_x * step;
-	if (map->map[(int)next_y][(int)ply->pos_x] != '1')
-		ply->pos_y += ply->dir_y * step;
-}
-
-static void	rotate_ply(t_ply *ply, double rot)
-{
-	double	old_dir_x;
-	double	old_plane_x;
-
-	old_dir_x = ply->dir_x;
-	ply->dir_x = ply->dir_x * cos(rot) - ply->dir_y * sin(rot);
-	ply->dir_y = old_dir_x * sin(rot) + ply->dir_y * cos(rot);
-
-	old_plane_x = ply->plane_x;
-	ply->plane_x = ply->plane_x * cos(rot) - ply->plane_y * sin(rot);
-	ply->plane_y = old_plane_x * sin(rot) + ply->plane_y * cos(rot);
-}
-
 static int	game_loop(void *ptr)
 {
 	t_game	*game;
@@ -156,11 +90,10 @@ static int	game_loop(void *ptr)
 	return (0);
 }
 
-
 void	init_hooks(t_game *game, void *win)
 {
 	mlx_hook(win, 17, 0, destroy_window, game);
-	mlx_hook(win, 2, 1L<<0, keypress, game);
-	mlx_hook(win, 3, 1L<<1, keyrelease, game);
+	mlx_hook(win, 2, 1L << 0, keypress, game);
+	mlx_hook(win, 3, 1L << 1, keyrelease, game);
 	mlx_loop_hook(game->exec.mlx.mlx, game_loop, game);
 }

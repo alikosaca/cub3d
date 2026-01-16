@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 15:34:46 by yaycicek          #+#    #+#             */
-/*   Updated: 2026/01/16 15:19:26 by akosaca          ###   ########.fr       */
+/*   Updated: 2026/01/16 15:28:32 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,9 +149,15 @@ t_img	*select_tex(t_ray *ray, t_xpm *xpm);
 int		select_tex_x(t_ray *ray, t_ply *ply, t_img *tex);
 
 void	destroy_exec(t_exec *exec);
-//void put_window(void *mlx, void *win, int x, int y, int color);
+
 double	perp_wall_dist(t_ray *ray, t_ply *ply, int side);
 
 void	draw_map(t_exec *exec, t_img *tex, int x, int tex_x);
+
+void	rotate_ply(t_ply *ply, double rot);
+void	move_ws(t_ply *ply, t_map *map, int dir);
+void	move_ad(t_ply *ply, t_map *map, int dir);
+
+
 
 #endif
