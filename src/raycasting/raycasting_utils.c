@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 11:00:58 by akosaca           #+#    #+#             */
-/*   Updated: 2026/01/16 13:22:20 by akosaca          ###   ########.fr       */
+/*   Updated: 2026/01/16 15:18:34 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 #include "cub3d.h"
 #include <math.h>
 
-double	wall_height_side(t_ray *ray, t_ply *ply, int side)
+double	perp_wall_dist(t_ray *ray, t_ply *ply, int side)
 {
 	if (side == EW)
-		return ((ray->map_x - ply->pos_x + (1 - ray->step_x) / 2) / ray->ray_dir_x);
+		return ((ray->map_x - ply->pos_x
+				+ (1 - ray->step_x) / 2) / ray->ray_dir_x);
 	else if (side == NS)
-		return ((ray->map_y - ply->pos_y + (1 - ray->step_y) / 2) / ray->ray_dir_y);
+		return ((ray->map_y - ply->pos_y
+				+ (1 - ray->step_y) / 2) / ray->ray_dir_y);
 	return (ray->perp_wall_dist);
 }
 
-void	draw_map(t_ray *ray, t_img *img, t_img *tex, int x, int tex_x)
+void	draw_map(t_exec *exec, t_img *tex, int x, int tex_x)
 {
 	double	step;
 	double	tex_pos;
@@ -31,24 +33,24 @@ void	draw_map(t_ray *ray, t_img *img, t_img *tex, int x, int tex_x)
 	int		tex_y;
 	int		y;
 
-	step = (double)tex->height / ray->line_height;
-	tex_pos = (ray->draw_start - SCREEN_HEIGHT / 2 + \
-				ray->line_height / 2) * step;
+	step = (double)tex->height / exec->ray.line_height;
+	tex_pos = (exec->ray.draw_start - SCREEN_HEIGHT / 2
+			+ exec->ray.line_height / 2) * step;
 	y = -1;
 	while (++y < SCREEN_HEIGHT)
 	{
-		if (y < ray->draw_start)
+		if (y < exec->ray.draw_start)
 			color = 0x2b1b0e;
-		else if (y <= ray->draw_end)
+		else if (y <= exec->ray.draw_end)
 		{
 			tex_y = (int)tex_pos & (tex->height - 1);
 			tex_pos += step;
-			color = *(int *)(tex->addr + \
-				(tex_y * tex->line_length + tex_x * (tex->bpp / 8)));
+			color = *(int *)(tex->addr
+					+ (tex_y * tex->line_length + tex_x * (tex->bpp / 8)));
 		}
 		else
 			color = 0x666666;
-		my_mlx_pixel_put(img, x, y, color);
+		my_mlx_pixel_put(&exec->img, x, y, color);
 	}
 }
 
@@ -73,7 +75,7 @@ int	select_tex_x(t_ray *ray, t_ply *ply, t_img *tex)
 	return (tex_x);
 }
 
-t_img *select_tex(t_ray *ray, t_xpm *xpm)
+t_img	*select_tex(t_ray *ray, t_xpm *xpm)
 {
 	if (ray->side == NS)
 	{
@@ -112,4 +114,3 @@ void	init_step_and_side_dist(t_ray *ray, t_ply *ply)
 	ray->step_x = res_x;
 	ray->step_y = res_y;
 }
-
