@@ -41,9 +41,10 @@ PRS       = $(SRC_DIR)/$(PRS_DIR)/parser.c \
             $(SRC_DIR)/$(PRS_DIR)/flood_fill_utils.c \
             $(SRC_DIR)/$(PRS_DIR)/destroy.c
 EXC       = $(SRC_DIR)/$(EXC_DIR)/executor.c \
-            $(SRC_DIR)/$(EXC_DIR)/render.c \
             $(SRC_DIR)/$(EXC_DIR)/map_init.c \
             $(SRC_DIR)/$(EXC_DIR)/hooks.c \
+            $(SRC_DIR)/$(EXC_DIR)/hooks_utils.c \
+			$(SRC_DIR)/$(EXC_DIR)/init_tex.c \
             $(SRC_DIR)/$(EXC_DIR)/destroy.c
 RAY       = $(SRC_DIR)/$(RAY_DIR)/raycasting.c \
             $(SRC_DIR)/$(RAY_DIR)/raycasting_utils.c

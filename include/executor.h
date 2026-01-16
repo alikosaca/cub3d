@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 15:34:46 by yaycicek          #+#    #+#             */
-/*   Updated: 2026/01/16 15:28:32 by akosaca          ###   ########.fr       */
+/*   Updated: 2026/01/16 16:45:40 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,8 @@
 //# define SCREEN_WIDTH 190
 //# define SCREEN_HEIGHT 100
 
-
-
 # define MOVE_SPEED 0.10
 # define ROT_SPEED 0.02
-
 
 # define ESC 65307
 # define A 97
@@ -39,10 +36,9 @@
 # define LOK 65361
 # define ROK 65363
 
-#define NS 0
-#define EW 1
-#define false 0
-#define true 1
+# define NS 0
+# define EW 1
+
 typedef struct s_game	t_game;
 
 typedef struct s_mlx
@@ -111,7 +107,6 @@ typedef struct s_player
 	double	plane_y;
 }	t_ply;
 
-
 typedef struct s_exec
 {
 	t_mlx	mlx;
@@ -125,27 +120,22 @@ typedef struct s_exec
 int		executor(t_game *game, t_exec *exec, t_pars *pars);
 
 int		init_mlx(void **mlx);
-int		create_xpm(void *mlx, t_xpm *xpm, t_tex tex);
 int		create_win(void *mlx, void **win);
-//int		read_map(void *mlx, void *win, t_map map);
 int		init_img_data(t_img *img_data, void *mlx);
+int		init_ply(t_ply *ply, t_map *map);
+
+int		create_xpm(void *mlx, t_xpm *xpm, t_tex tex);
 
 void	init_hooks(t_game *game, void *mlx);
 
-
-//void	draw_static_background(t_img *img);
-
-//int		ray_loop(t_ray *ray, t_ply *ply, t_map *map, t_img *img, t_xpm *xpm);
 int		ray_loop(t_exec *exec, t_map *map);
 
-int init_ply(t_ply *ply, t_map *map);
+void	init_step_and_side_dist(t_ray *ray, t_ply *ply);
 
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
-
-//ray_utils
-void	init_step_and_side_dist(t_ray *ray, t_ply *ply);
 t_img	*select_tex(t_ray *ray, t_xpm *xpm);
+void	init_step_and_side_dist(t_ray *ray, t_ply *ply);
 int		select_tex_x(t_ray *ray, t_ply *ply, t_img *tex);
 
 void	destroy_exec(t_exec *exec);
@@ -157,7 +147,5 @@ void	draw_map(t_exec *exec, t_img *tex, int x, int tex_x);
 void	rotate_ply(t_ply *ply, double rot);
 void	move_ws(t_ply *ply, t_map *map, int dir);
 void	move_ad(t_ply *ply, t_map *map, int dir);
-
-
 
 #endif
