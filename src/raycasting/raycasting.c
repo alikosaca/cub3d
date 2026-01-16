@@ -6,12 +6,11 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 15:56:33 by akosaca           #+#    #+#             */
-/*   Updated: 2026/01/16 15:18:47 by akosaca          ###   ########.fr       */
+/*   Updated: 2026/01/16 15:23:29 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include <stdio.h>
 
 static void	render_column(t_exec *exec, int x)
 {
