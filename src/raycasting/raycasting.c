@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 15:56:33 by akosaca           #+#    #+#             */
-/*   Updated: 2026/01/15 19:20:19 by akosaca          ###   ########.fr       */
+/*   Updated: 2026/01/16 13:23:31 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ static void	render_column(t_exec *exec, int x)
 
 static void	wall_height(t_ray *ray, t_ply *ply)
 {
-	if (ray->side == EW)
-		ray->perp_wall_dist = (ray->map_x - ply->pos_x + (1 - ray->step_x) / 2) / ray->ray_dir_x;
-	else if (ray->side == NS)
-		ray->perp_wall_dist = (ray->map_y - ply->pos_y + (1 - ray->step_y) / 2) / ray->ray_dir_y;
+	ray->perp_wall_dist = wall_height_side(ray, ply, ray->side);
 	if (ray->perp_wall_dist < 0.001)
 		ray->line_height = SCREEN_HEIGHT;
 	else

@@ -6,13 +6,22 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 11:00:58 by akosaca           #+#    #+#             */
-/*   Updated: 2026/01/15 19:23:23 by akosaca          ###   ########.fr       */
+/*   Updated: 2026/01/16 13:22:20 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executor.h"
 #include "cub3d.h"
 #include <math.h>
+
+double	wall_height_side(t_ray *ray, t_ply *ply, int side)
+{
+	if (side == EW)
+		return ((ray->map_x - ply->pos_x + (1 - ray->step_x) / 2) / ray->ray_dir_x);
+	else if (side == NS)
+		return ((ray->map_y - ply->pos_y + (1 - ray->step_y) / 2) / ray->ray_dir_y);
+	return (ray->perp_wall_dist);
+}
 
 void	draw_map(t_ray *ray, t_img *img, t_img *tex, int x, int tex_x)
 {
