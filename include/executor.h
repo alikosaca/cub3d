@@ -20,13 +20,13 @@
 # define PROJECT_NAME "cub3D"
 // # define SCREEN_WIDTH 3840
 // # define SCREEN_HEIGHT 2160
-# define SCREEN_WIDTH 1920
-# define SCREEN_HEIGHT 1000
+# define SCREEN_WIDTH 1280
+# define SCREEN_HEIGHT 720
 //# define SCREEN_WIDTH 190
 //# define SCREEN_HEIGHT 100
 
-# define MOVE_SPEED 0.10
-# define ROT_SPEED 0.02
+# define MOVE_SPEED 0.04
+# define ROT_SPEED 0.03
 
 # define ESC 65307
 # define A 97
