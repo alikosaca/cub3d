@@ -12,6 +12,11 @@
 
 #include "parser.h"
 
+int	create_rgb(int r, int b, int g)
+{
+	return (r << 16 | g << 8 | b);
+}
+
 static int	validate_rgb_commas(char *definition)
 {
 	char	*comma;
@@ -30,17 +35,6 @@ static int	validate_rgb_commas(char *definition)
 	return (0);
 }
 
-void	init_rgb_values(t_rgb *fl, t_rgb *cl, bool *initialized)
-{
-	fl->r = -1;
-	fl->g = -1;
-	fl->b = -1;
-	cl->r = -1;
-	cl->g = -1;
-	cl->b = -1;
-	(*initialized) = true;
-}
-
 static int	set_fl_or_cl(t_pars *pars, char **rgb_values, int *out, int *count)
 {
 	t_rgb	*fl;
@@ -53,6 +47,7 @@ static int	set_fl_or_cl(t_pars *pars, char **rgb_values, int *out, int *count)
 		fl->r = ft_atoi(rgb_values[0]);
 		fl->g = ft_atoi(rgb_values[1]);
 		fl->b = ft_atoi(rgb_values[2]);
+		fl->rgb = create_rgb(fl->r, fl->g, fl->b);
 		(*count)++;
 		return (0);
 	}
@@ -61,6 +56,7 @@ static int	set_fl_or_cl(t_pars *pars, char **rgb_values, int *out, int *count)
 		cl->r = ft_atoi(rgb_values[0]);
 		cl->g = ft_atoi(rgb_values[1]);
 		cl->b = ft_atoi(rgb_values[2]);
+		cl->rgb = create_rgb(cl->r, cl->g, cl->b);
 		(*count)++;
 		return (0);
 	}

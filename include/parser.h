@@ -32,6 +32,7 @@ typedef struct s_rgb
 	int		r;
 	int		g;
 	int		b;
+	int		rgb;
 }	t_rgb;
 
 typedef struct s_map
@@ -66,7 +67,6 @@ int		init_tex(t_pars *pars, char *grid[], int i, int *count);
 int		is_xpm_file(t_tex *tex, int *out);
 
 int		init_rgb(t_pars *pars, char *grid[], int i, int *c);
-void	init_rgb_values(t_rgb *fl, t_rgb *cl, bool *initialized);
 int		set_rgb_values(t_pars *pars, char **lines, int *out, int *c);
 
 int		init_map(t_pars *pars, char *grid[], int i);

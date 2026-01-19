@@ -12,6 +12,17 @@
 
 #include "parser.h"
 
+static void	init_rgb_values(t_rgb *fl, t_rgb *cl, bool *initialized)
+{
+	fl->r = -1;
+	fl->g = -1;
+	fl->b = -1;
+	cl->r = -1;
+	cl->g = -1;
+	cl->b = -1;
+	(*initialized) = true;
+}
+
 static int	is_rgb(char **lines, int *out)
 {
 	if (!(*lines))
