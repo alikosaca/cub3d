@@ -125,7 +125,7 @@ int		create_xpm(void *mlx, t_xpm *xpm, t_tex tex);
 
 void	init_hooks(t_game *game, void *mlx);
 
-int		ray_loop(t_exec *exec, t_map *map);
+int		ray_loop(t_game *game, t_map *map);
 
 void	init_step_and_side_dist(t_ray *ray, t_ply *ply);
 
@@ -139,7 +139,7 @@ void	destroy_exec(t_exec *exec);
 
 double	perp_wall_dist(t_ray *ray, t_ply *ply, int side);
 
-void	draw_map(t_exec *exec, t_img *tex, int x, int tex_x);
+void	draw_map(t_game *game, t_img *tex, int x, int tex_x);
 
 void	rotate_ply(t_ply *ply, double rot);
 void	move_ws(t_ply *ply, t_map *map, int dir);

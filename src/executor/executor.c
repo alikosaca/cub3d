@@ -39,7 +39,7 @@ int	executor(t_game *game)
 		return (1);
 	mlx_put_image_to_window(exec->mlx.mlx,
 		exec->mlx.win, exec->img.img, 0, 0);
-	if (ray_loop(exec, &pars->map))
+	if (ray_loop(game, &pars->map))
 		return (1);
 	init_hooks(game, exec->mlx.win);
 	mlx_put_image_to_window(exec->mlx.mlx,

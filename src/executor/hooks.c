@@ -84,7 +84,7 @@ static int	game_loop(void *ptr)
 		rotate_ply(&game->exec.ply, ROT_SPEED);
 	if (key->left)
 		rotate_ply(&game->exec.ply, -ROT_SPEED);
-	ray_loop(&game->exec, &game->pars.map);
+	ray_loop(game, &game->pars.map);
 	mlx_put_image_to_window(game->exec.mlx.mlx, game->exec.mlx.win,
 		game->exec.img.img, 0, 0);
 	return (0);

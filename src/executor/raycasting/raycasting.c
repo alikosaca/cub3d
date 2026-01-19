@@ -12,16 +12,18 @@
 
 #include "cub3d.h"
 
-static void	render_column(t_exec *exec, int x)
+static void	render_column(t_game *game, int x)
 {
+	t_exec	*exec;
 	t_img	*tex;
 	int		tex_x;
 
+	exec = &game->exec;
 	tex = select_tex(&exec->ray, &exec->xpm);
 	if (!tex || !tex->addr)
 		return ;
 	tex_x = select_tex_x(&exec->ray, &exec->ply, tex);
-	draw_map(exec, tex, x, tex_x);
+	draw_map(game, tex, x, tex_x);
 }
 
 static void	wall_height(t_ray *ray, t_ply *ply)
@@ -85,17 +87,19 @@ static void	init_ray(t_ray *ray, t_ply *ply, int x)
 	init_step_and_side_dist(ray, ply);
 }
 
-int	ray_loop(t_exec *exec, t_map *map)
+int	ray_loop(t_game *game, t_map *map)
 {
-	int	x;
+	t_exec	*exec;
+	int		x;
 
+	exec = &game->exec;
 	x = 0;
 	while (x < SCREEN_WIDTH)
 	{
 		init_ray(&exec->ray, &exec->ply, x);
 		hit_dda(&exec->ray, map);
 		wall_height(&exec->ray, &exec->ply);
-		render_column(exec, x);
+		render_column(game, x);
 		x++;
 	}
 	return (0);

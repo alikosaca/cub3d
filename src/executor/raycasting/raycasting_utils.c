@@ -25,7 +25,7 @@ double	perp_wall_dist(t_ray *ray, t_ply *ply, int side)
 	return (ray->perp_wall_dist);
 }
 
-void	draw_map(t_exec *exec, t_img *tex, int x, int tex_x)
+void	draw_map(t_game *game, t_img *tex, int x, int tex_x)
 {
 	double	step;
 	double	tex_pos;
@@ -33,15 +33,15 @@ void	draw_map(t_exec *exec, t_img *tex, int x, int tex_x)
 	int		tex_y;
 	int		y;
 
-	step = (double)tex->height / exec->ray.line_height;
-	tex_pos = (exec->ray.draw_start - SCREEN_HEIGHT / 2
-			+ exec->ray.line_height / 2) * step;
+	step = (double)tex->height / game->exec.ray.line_height;;
+	tex_pos = (game->exec.ray.draw_start - SCREEN_HEIGHT / 2
+			+ game->exec.ray.line_height / 2) * step;
 	y = -1;
 	while (++y < SCREEN_HEIGHT)
 	{
-		if (y < exec->ray.draw_start)
-			color = 0x2b1b0e;
-		else if (y <= exec->ray.draw_end)
+		if (y < game->exec.ray.draw_start)
+			color = game->pars.cl.rgb;
+		else if (y <= game->exec.ray.draw_end)
 		{
 			tex_y = (int)tex_pos & (tex->height - 1);
 			tex_pos += step;
@@ -49,8 +49,8 @@ void	draw_map(t_exec *exec, t_img *tex, int x, int tex_x)
 					+ (tex_y * tex->line_length + tex_x * (tex->bpp / 8)));
 		}
 		else
-			color = 0x666666;
-		my_mlx_pixel_put(&exec->img, x, y, color);
+			color = game->pars.fl.rgb;
+		my_mlx_pixel_put(&game->exec.img, x, y, color);
 	}
 }
 
