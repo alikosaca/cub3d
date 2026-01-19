@@ -12,7 +12,7 @@
 
 #include "executor.h"
 
-static void	destroy_xpm(void *mlx, t_xpm *xpm, void *img)
+static void	destroy_xpm(void *mlx, t_xpm *xpm)
 {
 	if (xpm->no.img)
 		mlx_destroy_image(mlx, xpm->no.img);
@@ -22,6 +22,10 @@ static void	destroy_xpm(void *mlx, t_xpm *xpm, void *img)
 		mlx_destroy_image(mlx, xpm->we.img);
 	if (xpm->ea.img)
 		mlx_destroy_image(mlx, xpm->ea.img);
+}
+
+static void	destroy_img(void *mlx, void *img)
+{
 	if (img)
 		mlx_destroy_image(mlx, img);
 }
@@ -39,6 +43,7 @@ static void	destroy_mlx(t_mlx *mlx)
 
 void	destroy_exec(t_exec *exec)
 {
-	destroy_xpm(exec->mlx.mlx, &exec->xpm, exec->img.img);
+	destroy_xpm(exec->mlx.mlx, &exec->xpm);
+	destroy_img(exec->mlx.mlx, exec->img.img);
 	destroy_mlx(&exec->mlx);
 }
