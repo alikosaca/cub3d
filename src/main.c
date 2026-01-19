@@ -21,6 +21,5 @@ int	main(int argc, char *argv[])
 		return (cleanup(game), EXIT_FAILURE);
 	if (executor(game))
 		return (cleanup(game), EXIT_FAILURE);
-	cleanup(game);
 	return (EXIT_SUCCESS);
 }
