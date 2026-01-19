@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "executor.h"
 #include "cub3d.h"
-#include <math.h>
 
 double	perp_wall_dist(t_ray *ray, t_ply *ply, int side)
 {

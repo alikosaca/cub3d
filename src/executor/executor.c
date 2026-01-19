@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "executor.h"
 
 static int	init_game(t_exec *exec, t_pars *pars)
 {
