@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "parser.h"
-#include <stdio.h>
 
 int	set_map_height(int *h, char *grid[], int i)
 {

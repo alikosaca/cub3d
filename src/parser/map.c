@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "parser.h"
-#include <stdio.h>
 
 int	init_map(t_pars *pars, char *grid[], int i)
 {

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "parser.h"
-#include <stdio.h>
 
 static int	is_tex(char **lines, int *out)
 {

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "parser.h"
-#include <stdio.h>
 
 int	get_file_height(int *height, char *file, int fd)
 {
