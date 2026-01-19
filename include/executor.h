@@ -114,7 +114,7 @@ typedef struct s_exec
 	t_keys	key;
 }	t_exec;
 
-int		executor(t_game *game, t_exec *exec, t_pars *pars);
+int		executor(t_game *game);
 
 int		init_mlx(void **mlx);
 int		create_win(void *mlx, void **win);

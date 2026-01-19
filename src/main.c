@@ -19,7 +19,7 @@ int	main(int argc, char *argv[])
 	verify(argc, argv[1]);
 	if (parser(&game->pars, argv[1]))
 		return (cleanup(game), EXIT_FAILURE);
-	if (executor(game, &game->exec, &game->pars))
+	if (executor(game))
 		return (cleanup(game), EXIT_FAILURE);
 	cleanup(game);
 	return (EXIT_SUCCESS);

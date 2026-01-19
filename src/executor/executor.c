@@ -28,8 +28,13 @@ static int	init_game(t_exec *exec, t_pars *pars)
 	return (0);
 }
 
-int	executor(t_game *game, t_exec *exec, t_pars *pars)
+int	executor(t_game *game)
 {
+	t_pars	*pars;
+	t_exec	*exec;
+
+	pars = &game->pars;
+	exec = &game->exec;
 	if (init_game(exec, pars))
 		return (1);
 	mlx_put_image_to_window(exec->mlx.mlx,
