@@ -44,7 +44,7 @@ EXC       = $(SRC_DIR)/$(EXC_DIR)/executor.c \
             $(SRC_DIR)/$(EXC_DIR)/map_init.c \
             $(SRC_DIR)/$(EXC_DIR)/hooks.c \
             $(SRC_DIR)/$(EXC_DIR)/hooks_utils.c \
-			$(SRC_DIR)/$(EXC_DIR)/tex_init.c \
+            $(SRC_DIR)/$(EXC_DIR)/tex_init.c \
             $(SRC_DIR)/$(EXC_DIR)/destroy.c
 RAY       = $(SRC_DIR)/$(EXC_DIR)/$(RAY_DIR)/raycasting.c \
             $(SRC_DIR)/$(EXC_DIR)/$(RAY_DIR)/raycasting_utils.c
