@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 12:15:35 by akosaca           #+#    #+#             */
-/*   Updated: 2026/01/16 15:24:41 by akosaca          ###   ########.fr       */
+/*   Updated: 2026/01/20 16:17:34 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ int	executor(t_game *game)
 		return (1);
 	mlx_put_image_to_window(exec->mlx.mlx,
 		exec->mlx.win, exec->img.img, 0, 0);
-	if (ray_loop(game, &pars->map))
-		return (1);
+	ray_loop(game, &pars->map);
 	init_hooks(game, exec->mlx.win);
 	mlx_put_image_to_window(exec->mlx.mlx,
 		exec->mlx.win, exec->img.img, 0, 0);

@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 15:34:46 by yaycicek          #+#    #+#             */
-/*   Updated: 2026/01/16 16:45:40 by akosaca          ###   ########.fr       */
+/*   Updated: 2026/01/20 16:16:28 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ int		create_xpm(void *mlx, t_xpm *xpm, t_tex tex);
 
 void	init_hooks(t_game *game, void *mlx);
 
-int		ray_loop(t_game *game, t_map *map);
+void	ray_loop(t_game *game, t_map *map);
 
 void	init_step_and_side_dist(t_ray *ray, t_ply *ply);
 
