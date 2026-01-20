@@ -31,8 +31,6 @@ static int	ff(t_map *map, char *copy[], int y, int x)
 		return (0);
 	if (is_space(copy[y][x]) || is_visited(copy[y][x]))
 		return (0);
-	if (!ft_strchr("10NSEW", copy[y][x]))
-		return (0);
 	if (is_walkable(copy[y][x]) && has_open_neighbor(map, copy, y, x))
 		return (print(ERR_OPEN_MAP));
 	mark(&copy[y][x]);
