@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaycicek <yaycicek@student.42istanbul.com. +#+  +:+       +#+        */
+/*   By: yaycicek <yaycicek@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 18:43:24 by yaycicek          #+#    #+#             */
 /*   Updated: 2025/12/06 12:08:20 by yaycicek         ###   ########.fr       */

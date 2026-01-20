@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   grid_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yaycicek <yaycicek@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 19:29:39 by yaycicek          #+#    #+#             */
 /*   Updated: 2025/09/29 17:27:41 by yaycicek         ###   ########.fr       */

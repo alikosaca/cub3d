@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yaycicek <yaycicek@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 05:01:53 by yaycicek          #+#    #+#             */
 /*   Updated: 2025/09/10 05:05:42 by yaycicek         ###   ########.fr       */

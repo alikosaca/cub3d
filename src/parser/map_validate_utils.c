@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   map_validate_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yaycicek <yaycicek@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 12:12:27 by yaycicek          #+#    #+#             */
 /*   Updated: 2025/10/01 13:42:20 by yaycicek         ###   ########.fr       */

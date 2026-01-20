@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaycicek <yaycicek@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yaycicek <yaycicek@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 14:41:20 by yaycicek          #+#    #+#             */
 /*   Updated: 2025/10/02 16:25:59 by yaycicek         ###   ########.fr       */

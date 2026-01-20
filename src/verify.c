@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   verify.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaycicek <yaycicek@student.42istanbul.com. +#+  +:+       +#+        */
+/*   By: yaycicek <yaycicek@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 16:42:29 by yaycicek          #+#    #+#             */
 /*   Updated: 2025/12/06 11:39:11 by yaycicek         ###   ########.fr       */
