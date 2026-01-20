@@ -31,7 +31,7 @@ void	draw_map(t_game *game, t_img *tex, int x, int tex_x)
 	int		tex_y;
 	int		y;
 
-	step = (double)tex->height / game->exec.ray.line_height;;
+	step = (double)tex->height / game->exec.ray.line_height;
 	tex_pos = (game->exec.ray.draw_start - SCREEN_HEIGHT / 2
 			+ game->exec.ray.line_height / 2) * step;
 	y = -1;
