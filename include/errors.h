@@ -13,7 +13,7 @@
 #ifndef ERRORS_H
 # define ERRORS_H
 
-# define ERR_INVALID_ARGS "Usage: ./cub3D <map.cub>"
+# define ERR_INVALID_ARGS "Usage: ./bin/cub3D <map.cub>"
 # define ERR_INVALID_EXTENSION "Map file must have a .cub extension"
 # define ERR_FILE_MISS_OR_UNREAD "Map file does not exist or is not readable"
 # define ERR_EMPTY_MAP "Map file cannot be empty"
