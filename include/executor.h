@@ -125,7 +125,7 @@ int		create_xpm(void *mlx, t_xpm *xpm, t_tex tex);
 
 void	init_hooks(t_game *game, void *mlx);
 
-void	ray_loop(t_game *game, t_map *map);
+int		ray_loop(t_game *game, t_map *map);
 
 void	init_step_and_side_dist(t_ray *ray, t_ply *ply);
 
