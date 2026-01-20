@@ -61,7 +61,6 @@ int		check_invalid_whitespace(char *grid[]);
 
 int		is_identifier(char *line);
 int		is_mapline(char *line);
-char	**get_split_lines(char *line);
 
 int		init_tex(t_pars *pars, char *grid[], int i, int *count);
 int		is_xpm_file(t_tex *tex, int *out);

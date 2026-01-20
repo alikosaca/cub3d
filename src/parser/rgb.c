@@ -54,7 +54,7 @@ int	init_rgb(t_pars *pars, char *grid[], int i, int *c)
 	int			checker;
 	char		**lines;
 
-	lines = get_split_lines(grid[i]);
+	lines = ft_split(grid[i], ' ');
 	if (!lines)
 		return (1);
 	if (!initialized)

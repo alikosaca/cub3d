@@ -39,13 +39,3 @@ int	is_mapline(char *line)
 		line++;
 	return ((*line) == '\0');
 }
-
-char	**get_split_lines(char *line)
-{
-	char	**lines;
-
-	lines = ft_split(line, ' ');
-	if (!lines)
-		return (NULL);
-	return (lines);
-}
