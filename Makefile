@@ -61,6 +61,9 @@ $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
 $(MLX):
+	@if [ ! -d "$(MLX_DIR)" ]; then \
+		git submodule update --init --recursive; \
+	fi
 	$(MAKE) -C $(MLX_DIR)
 
 $(TARGET): $(OBJ) $(MLX)
@@ -73,7 +76,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
-	$(MAKE) -C $(MLX_DIR) clean
+	@[ -d $(MLX_DIR) ] && $(MAKE) -C $(MLX_DIR) clean || true
 	$(RM) $(BUILD_DIR)
 
 fclean: clean
