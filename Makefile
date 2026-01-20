@@ -62,7 +62,7 @@ $(LIBFT):
 
 $(MLX):
 	@if [ ! -d "$(MLX_DIR)" ]; then \
-		git submodule update --init --recursive; \
+		git submodule update; \
 	fi
 	$(MAKE) -C $(MLX_DIR)
 
