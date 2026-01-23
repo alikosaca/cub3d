@@ -22,8 +22,7 @@ int	init_map(t_pars *pars, char *grid[], int i)
 	set_map_max_width(&map->max_w, grid, i);
 	if (alloc_map(&map->map, map->h, map->max_w))
 		return (1);
-	if (fill_map(map, grid, i))
-		return (1);
+	fill_map(map, grid, i);
 	if (set_player_values(map->map, &map->p_y, &map->p_x, &map->p_dir))
 		return (1);
 	return (0);

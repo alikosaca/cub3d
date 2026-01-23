@@ -54,7 +54,7 @@ int	alloc_map(char **map[], int h, int max_w)
 	return (0);
 }
 
-int	fill_map(t_map *map, char *grid[], int i)
+void	fill_map(t_map *map, char *grid[], int i)
 {
 	int	j;
 	int	k;
@@ -78,7 +78,6 @@ int	fill_map(t_map *map, char *grid[], int i)
 		j++;
 	}
 	map->map[j] = NULL;
-	return (0);
 }
 
 int	set_player_values(char *map[], int *p_y, int *p_x, char *p_dir)

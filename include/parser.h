@@ -72,7 +72,7 @@ int		init_map(t_pars *pars, char *grid[], int i);
 int		set_map_height(int *h, char *grid[], int i);
 void	set_map_max_width(int *max_w, char *grid[], int i);
 int		alloc_map(char **map[], int h, int max_w);
-int		fill_map(t_map *map, char *grid[], int i);
+void	fill_map(t_map *map, char *grid[], int i);
 int		set_player_values(char *map[], int *p_y, int *p_x, char *p_dir);
 
 int		validate_map(t_map *map);
