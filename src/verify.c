@@ -28,7 +28,9 @@ static int	check_file_extension(char *file)
 	char	*ext;
 
 	ext = ft_strrchr(file, '.');
-	if (!ext || ft_strcmp(ext, ".cub") != 0 || ft_strlen(file) == 4)
+	if (!ext || ft_strcmp(ext, ".cub") != 0)
+		return (1);
+	if (ext == file || *(ext - 1) == '/')
 		return (1);
 	return (0);
 }
