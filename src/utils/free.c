@@ -12,20 +12,21 @@
 
 #include "utils.h"
 
-void	_free(void **ptr)
+int	_free(void **ptr)
 {
 	if (!(*ptr))
-		return ;
+		return (1);
 	free((*ptr));
 	(*ptr) = NULL;
+	return (1);
 }
 
-void	__free(void ***ptr)
+int	__free(void ***ptr)
 {
 	size_t	i;
 
 	if (!(*ptr))
-		return ;
+		return (1);
 	i = 0;
 	while ((*ptr)[i])
 	{
@@ -34,4 +35,5 @@ void	__free(void ***ptr)
 	}
 	free((*ptr));
 	(*ptr) = NULL;
+	return (1);
 }

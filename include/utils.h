@@ -21,7 +21,7 @@ int		print(char *str);
 void	*_alloc(void **ptr, size_t nmemb, size_t size);
 void	*__alloc(void ***ptr, size_t nmemb, size_t size);
 
-void	_free(void **ptr);
-void	__free(void ***ptr);
+int		_free(void **ptr);
+int		__free(void ***ptr);
 
 #endif
