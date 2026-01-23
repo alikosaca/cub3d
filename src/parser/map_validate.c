@@ -19,7 +19,7 @@ int	validate_map(t_map *map)
 	if (alloc_copy(&copy, map->map, map->h, map->max_w))
 		return (1);
 	if (flood_fill(map, copy))
-		return (__free((void ***)&copy), 1);
+		return (__free((void ***)&copy));
 	__free((void ***)&copy);
 	return (0);
 }

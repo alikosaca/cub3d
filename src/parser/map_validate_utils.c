@@ -23,7 +23,7 @@ int	alloc_copy(char **copy[], char *map[], int h, int max_w)
 	while (i < h)
 	{
 		if (!_alloc((void **)&(*copy)[i], max_w + 1, sizeof(char)))
-			return (__free((void ***)copy), 1);
+			return (__free((void ***)copy));
 		j = 0;
 		while (j < max_w)
 		{

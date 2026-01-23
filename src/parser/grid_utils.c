@@ -62,7 +62,10 @@ int	fill_grid(char *grid[], char *file, int fd)
 		strip_newline(line);
 		grid[i] = ft_strdup(line);
 		if (!grid[i])
-			return (_free((void **)&line), close(fd), 1);
+		{
+			close(fd);
+			return (_free((void **)&line));
+		}
 		_free((void **)&line);
 		i++;
 	}

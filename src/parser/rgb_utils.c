@@ -98,11 +98,15 @@ int	set_rgb_values(t_pars *pars, char **lines, int *out, int *count)
 	if (!rgb_values)
 		return (1);
 	if (rgb_values[3])
-		return (__free((void ***)&rgb_values), print(ERR_RGB_OVERFLOW));
+	{
+		__free((void ***)&rgb_values);
+		print(ERR_RGB_OVERFLOW);
+		return (1);
+	}
 	if (check_rgb_values(rgb_values))
-		return (__free((void ***)&rgb_values), 1);
+		return (__free((void ***)&rgb_values));
 	if (set_fl_or_cl(pars, rgb_values, out, count))
-		return (__free((void ***)&rgb_values), 1);
+		return (__free((void ***)&rgb_values));
 	__free((void ***)&rgb_values);
 	return (0);
 }

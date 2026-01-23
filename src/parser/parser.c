@@ -83,13 +83,13 @@ int	parser(t_pars *pars, char *file)
 
 	grid = NULL;
 	if (read_file(&grid, file))
-		return (__free((void ***)&grid), 1);
+		return (__free((void ***)&grid));
 	if (check_file(grid))
-		return (__free((void ***)&grid), 1);
+		return (__free((void ***)&grid));
 	if (init_pars(pars, grid))
-		return (__free((void ***)&grid), 1);
+		return (__free((void ***)&grid));
 	if (validate_map(&pars->map))
-		return (__free((void ***)&grid), 1);
+		return (__free((void ***)&grid));
 	__free((void ***)&grid);
 	return (0);
 }

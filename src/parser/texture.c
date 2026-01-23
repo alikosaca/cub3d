@@ -65,9 +65,9 @@ int	init_tex(t_pars *pars, char *grid[], int i, int *c)
 	{
 		checker = set_tex(pars, lines, &out, c);
 		if (checker == 1)
-			return (__free((void ***)&lines), 1);
+			return (__free((void ***)&lines));
 		if (is_xpm_file(&pars->tex, &out))
-			return (__free((void ***)&lines), 1);
+			return (__free((void ***)&lines));
 	}
 	__free((void ***)&lines);
 	return (0);

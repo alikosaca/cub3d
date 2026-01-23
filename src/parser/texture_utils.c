@@ -30,7 +30,11 @@ static int	validate_xpm_file(char *file)
 	if (fd == -1)
 		return (print(ERR_TEX_FILE));
 	if (check_xpm_ext(file))
-		return (close(fd), print(ERR_INVALID_TEX_EXT));
+	{
+		close(fd);
+		print(ERR_INVALID_TEX_EXT);
+		return (1);
+	}
 	close(fd);
 	return (0);
 }
