@@ -16,5 +16,5 @@ int	cleanup(t_game *game)
 {
 	destroy_pars(&game->pars);
 	destroy_exec(&game->exec);
-	return (0);
+	return (1);
 }
